@@ -46,8 +46,8 @@ public final class Main extends JavaPlugin {
     private static Main instance;
 
     //Plugin urls
-    private final String URL_TO_FILE_VERSION = "https://raw.githubusercontent.com/ilezzov-code/Plugin-Blank/main/VERSION";
-    public static final String URL_TO_DOWNLOAD_LATEST_VERSION = "https://modrinth.com/plugin/CoolLobby";
+    private final String URL_TO_FILE_VERSION = "https://raw.githubusercontent.com/ilezzov-code/CoolLObby/main/VERSION";
+    public static final String URL_TO_DOWNLOAD_LATEST_VERSION = "https://github.com/ilezzov-code/CoolLobby/releases";
 
     //Plugin info
     @Getter
@@ -144,7 +144,7 @@ public final class Main extends JavaPlugin {
 
         DoubleJumpManager.start();
 
-        final Metrics metrics = new Metrics(this, BS_STATS_PLUGIN_ID);
+        Metrics metrics = new Metrics(this, BS_STATS_PLUGIN_ID);
 
         sendEnableMessage(enablePlaceholders.getPlaceholders());
     }

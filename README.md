@@ -1,14 +1,10 @@
 <div align="center">
-    <img src="img/logo/coollobby.png"> 
+    <img src="img/logo/coollobby.png">
 </div>
-
----
 
 <div align="center">
-    <h1>Разнообразь ваше времяпровожение в Lobby</h1>
+    <h1>Diversify your time in Lobby</h1>
 </div>
-
----
 
 <div align="center">
     <a><img src="https://i.imgur.com/ZvVP80t.png" width="40"></a>
@@ -16,97 +12,95 @@
     <a><img src="https://i.imgur.com/Wi0gG3J.png" width="40"></a>
 </div>
 
----
+### <img src="img/flags/ru.svg" width="15"> [Перейти на русский язык](readmes/README_RU.md)
 
-### <img src="img/flags/en.svg" width="15"> [Select English Version](readmes/README_EN.md)
+## Description:
 
-## Описание:
+CoolLobby is a plugin that adds many useful commands for your lobby.
 
-CoolLobby — плагин, который добавит множество полезных команд для вашего лобби
+## Features:
+* Support for 17 languages
+* Multi-world synchronization
+* Disable damage
+* Disable hunger
+* Disable time cycle
+* Disable weather cycle
+* Disable mob spawning
+* Disable fire spread
+* Set default time
+* Set default weather
+* Set default gamemode
+* Set player level
+* `/firework` command
+* `/lighting` command
+* `/spit` command
+* `/fly` command
+* Double Jump:
+  * Set sound for double jump
+  * Set effect for double jump
+* Join and Leave Messages:
+  * Join sound
+  * Join title
+* Enable/Disable any plugin feature
+* Set cooldown for each command
 
-## Возможности:
-* Поддержка 17 языков
-* Синхронизация с несколькими мирами
-* Отключить получение урона
-* Отключить голод
-* Отключить смену времени суток
-* Отключить смену погоды
-* Отключить спавн мобов
-* Отключить распространение огня
-* Установить стандартное время суток
-* Установить стандартную погоду
-* Установить стандартный игровой режим
-* Установить уровень игроку
-* Команда `/firework`
-* Команда `/lighting`
-* Команда `/spit`
-* Команда `/fly`
-* Двойной прыжок:
-  * Установить звук при двойном прыжке
-  * Установить эффект при двойном прыжке
-* Сообщение при входе и выходе:
-  * Звук при входе
-  * Title при входе
-* Включить / Отключить любую функцию плагина
-* Установить задержку на использование для каждой команды
-
-## Команды
+## Commands
 ### /firework [/fw]:
-* Запускает фейерверк 
-* Право: cool-lobby.fw
+* Launches a firework
+* Permission: cool-lobby.fw
 
 ### /lighting [/lt]
-* Призывает молнию
-* Право: cool-lobby.lt
+* Summons lightning
+* Permission: cool-lobby.lt
 
 ### /spit
-* Плюет в игрока (Визуальный эффект плевка Ламы)
-* Право: cool-lobby.spit
+* Spits at a player (Visual effect of Llama spit)
+* Permission: cool-lobby.spit
 
 ### /fly
-* Включает / Выключает полет
-* Синхронизирует полет, если команду можно использовать не только в Lobby
-* Право: cool-lobby.fly
+* Enables/Disables flight
+* Syncs flight if the command can be used outside the Lobby
+* Permission: cool-lobby.fly
 
-## Двойной прыжок
-* Прыгните выше при нажатии двойного пробела
-* Спавнит частицы во время прыжка
-* Проигрывает звук во время прыжка
-* Право: cool-lobby.double_jump
+## Double Jump
+* Jump higher by double-tapping space
+* Spawns particles during the jump
+* Plays a sound during the jump
+* Permission: cool-lobby.double_jump
 
-## Все права плагина
+## Plugin Permissions
 
-| Право                  | Описание                                   |
-|------------------------|--------------------------------------------|
-| cool-lobby.*           | Дает доступ ко всем командам               |
-| cool-lobby.reload      | Дает доступ к перезагрузке плагина         |
-| cool-lobby.no_cooldown | Отключает задержку на использование команд |
-| cool-lobby.fw          | Доступ к команде /firework                 |
-| cool-lobby.lt          | Доступ к команде /lighting                 |
-| cool-lobby.spit        | Доступ к команде /spit                     |
-| cool-lobby.fly         | Доступ к команде /fly                      |
-| cool-lobby.double_jump | Доступ к двойному прыжку                   |
+| Permission             | Description                        |
+|------------------------|------------------------------------|
+| cool-lobby.*           | Grants access to all commands      |
+| cool-lobby.reload      | Grants access to reload the plugin |
+| cool-lobby.no_cooldown | Disables cooldown for commands     |
+| cool-lobby.fw          | Access to /firework command        |
+| cool-lobby.lt          | Access to /lighting command        |
+| cool-lobby.spit        | Access to /spit command            |
+| cool-lobby.fly         | Access to /fly command             |
+| cool-lobby.double_jump | Access to double jump              |
 
-## Поддерживаемые языки:
-* ru-ru → Русский (Россия)
-* en-us → Английский (США)
-* cs-cz → Чешский (Чехия) 
-* de-de → Немецкий (Германия) 
-* es-es → Испанский (Испания) 
-* fi-fi → Финский (Финляндия) 
-* fr-fr → Французский (Франция) 
-* id-id → Индонезийский (Индонезия) 
-* it-it → Итальянский (Италия) 
-* ja-jp → Японский (Япония)
-* pl-pl → Польский (Польша)
-* pt-br → Португальский (Бразилия)
-* sk-sk → Словацкий (Словакия)
-* tr-tr → Турецкий (Турция)
-* uk-ua → Украинский (Украина) 
-* zn-cn → Упрощённый китайский (Китай) 
-* zh-tw → Традиционный китайский (Тайвань) 
+## Supported Languages:
+* ru-ru → Russian (Russia)
+* en-us → English (USA)
+* cs-cz → Czech (Czech Republic)
+* de-de → German (Germany)
+* es-es → Spanish (Spain)
+* fi-fi → Finnish (Finland)
+* fr-fr → French (France)
+* id-id → Indonesian (Indonesia)
+* it-it → Italian (Italy)
+* ja-jp → Japanese (Japan)
+* pl-pl → Polish (Poland)
+* pt-br → Portuguese (Brazil)
+* sk-sk → Slovak (Slovakia)
+* tr-tr → Turkish (Turkey)
+* uk-ua → Ukrainian (Ukraine)
+* zn-cn → Simplified Chinese (China)
+* zh-tw → Traditional Chinese (Taiwan)
 
-## Файл config.yml
+## config.yml File
 ```yml
 language: "ru-RU"
 
@@ -249,10 +243,10 @@ player_leave:
 config_version: 1.0
 ```
 
-## Что делать если я не хочу выделять отдельный сервер под Lobby
-Плагин запоминает уровень игрока, игровой режим, голод для того, чтобы при выходе из лобби, например в игровой мир, игроку был установлен его уровень опыта, его прежний игровой режим и уровень голода. Таким образом плагин подойдет тем, кто не хочет выделять дополнительный сервер под Lobby
+## What if I don't want a dedicated Lobby server?
+The plugin remembers the player's level, game mode, and hunger so that when they leave the lobby (e.g., entering a game world), their previous settings are restored. This makes the plugin suitable for those who don’t want to dedicate an extra server for the Lobby.
 
-## Скриншоты
+## Screenshots
 `/firework`
 <div>
   <img src="img/screenshots/fw_1.png" width="200">
@@ -279,16 +273,17 @@ config_version: 1.0
   <img src="img/screenshots/db2.png" width="200">
 </div>
 
-## Ссылки на автора:
-* Связаться: https://t.me/ilezovofficial
-* Телеграм канал: https://t.me/ilezzov
+## Author Links:
+* Contact: https://t.me/ilezovofficial
+* Telegram Channel: https://t.me/ilezzov
 * GitHub: https://github.com/ilezzov-code
 
-## Поддержите разработку:
+## Support Development:
 * DA: https://www.donationalerts.com/r/ilezzov_dev
 * YooMoney: https://yoomoney.ru/fundraise/193CD8F13OH.250319
 * Telegram Gift: https://t.me/ilezovofficial
 * TON: UQCsMXvc2og_Sn91TJ8NsHTU9qyvx6qJPZ4TjEJTPdUY0Fes
 * Card: 5536914188326494
 
-## Возникла ошибка или вопрос? — 
+## Have an issue or a question? Create new issue — https://github.com/ilezzov-code/CoolLobby/issues/new
+

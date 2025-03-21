@@ -1,14 +1,10 @@
 <div align="center">
-    <img src="img/logo/coollobby.png"> 
+    <img src="https://raw.githubusercontent.com/ilezzov-code/CoolLobby/refs/heads/main/img/logo/coollobby.png"> 
 </div>
-
----
 
 <div align="center">
     <h1>Разнообразь ваше времяпровожение в Lobby</h1>
 </div>
-
----
 
 <div align="center">
     <a><img src="https://i.imgur.com/ZvVP80t.png" width="40"></a>
@@ -16,9 +12,7 @@
     <a><img src="https://i.imgur.com/Wi0gG3J.png" width="40"></a>
 </div>
 
----
-
-### <img src="img/flags/en.svg" width="15"> [Select English Version](readmes/README_EN.md)
+### <img src="https://raw.githubusercontent.com/ilezzov-code/CoolLobby/refs/heads/main/img/flags/en.svg" width="15"> [Select English Version](readmes/README_EN.md)
 
 ## Описание:
 
@@ -255,28 +249,28 @@ config_version: 1.0
 ## Скриншоты
 `/firework`
 <div>
-  <img src="img/screenshots/fw_1.png" width="200">
-  <img src="img/screenshots/fw_2.png" width="200">
-  <img src="img/screenshots/fw_3.png" width="200">
-  <img src="img/screenshots/fw_4.png" width="200">
+  <img src="https://raw.githubusercontent.com/ilezzov-code/CoolLobby/refs/heads/main/img/screenshots/fw_1.png" width="200">
+  <img src="https://raw.githubusercontent.com/ilezzov-code/CoolLobby/refs/heads/main/img/screenshots/fw_2.png" width="200">
+  <img src="https://raw.githubusercontent.com/ilezzov-code/CoolLobby/refs/heads/main/img/screenshots/fw_3.png" width="200">
+  <img src="https://raw.githubusercontent.com/ilezzov-code/CoolLobby/refs/heads/main/img/screenshots/fw_4.png" width="200">
 </div>
 
 `/lighting`
 <div>
-  <img src="img/screenshots/lt1.png" width="200">
-  <img src="img/screenshots/lt2.png" width="200">
+  <img src="https://raw.githubusercontent.com/ilezzov-code/CoolLobby/refs/heads/main/img/screenshots/lt1.png" width="200">
+  <img src="https://raw.githubusercontent.com/ilezzov-code/CoolLobby/refs/heads/main/img/screenshots/lt2.png" width="200">
 </div>
 
 `/spit`
 <div>
-  <img src="img/screenshots/spit.png" width="200">
-  <img src="img/screenshots/spit2.png" width="200">
+  <img src="https://raw.githubusercontent.com/ilezzov-code/CoolLobby/refs/heads/main/img/screenshots/spit.png" width="200">
+  <img src="https://raw.githubusercontent.com/ilezzov-code/CoolLobby/refs/heads/main/img/screenshots/spit2.png" width="200">
 </div>
 
 `Double Jump`
 <div>
-  <img src="img/screenshots/db1.png" width="200">
-  <img src="img/screenshots/db2.png" width="200">
+  <img src="https://raw.githubusercontent.com/ilezzov-code/CoolLobby/refs/heads/main/img/screenshots/db1.png" width="200">
+  <img src="https://raw.githubusercontent.com/ilezzov-code/CoolLobby/refs/heads/main/img/screenshots/db2.png" width="200">
 </div>
 
 ## Ссылки на автора:
@@ -291,4 +285,4 @@ config_version: 1.0
 * TON: UQCsMXvc2og_Sn91TJ8NsHTU9qyvx6qJPZ4TjEJTPdUY0Fes
 * Card: 5536914188326494
 
-## Возникла ошибка или вопрос? — 
+## Возникла ошибка или вопрос? Создайте новую тему — https://github.com/ilezzov-code/CoolLobby/issues/new
