@@ -24,8 +24,10 @@
 # • TON: UQCsMXvc2og_Sn91TJ8NsHTU9qyvx6qJPZ4TjEJTPdUY0Fes
 # • Card: 5536914188326494
 
-# Supporting messages languages: Russian (ru-RU), English (en-US), Český (cs-CZ)
-# Доступные языки сообщений: Русский (ru-RU), Английский (en-US), Чешский (cs-CZ)
+# Supporting messages languages / Доступные языки сообщений:
+# • Русский (ru-RU)
+# •  English (en-US)
+# •  Český (cs-CZ)
 language: "ru-RU"
 
 # Check the plugin for updates
@@ -160,10 +162,11 @@ player_join:
 player_leave:
   global_leave_message:
     enable: true
+    message: true
 
 # Don't edit this
 # Не редактируйте это
-version: 1.0
+config_version: 1.0
 
 
 

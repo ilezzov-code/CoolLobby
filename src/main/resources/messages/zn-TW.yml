@@ -1,0 +1,53 @@
+#插件支援所有類型的訊息格式化。
+# LEGACY — 通過 & / § 設置顏色，HEX 通過 &#rrggbb / §#rrggbb 或 &x&r&r&g&g&b&b / §x§r§r§g§g§b§b 設置
+# LEGACY_ADVANCED — 通過 &##rrggbb / §##rrggbb 設置顏色和 HEX
+# MINI_MESSAGE — 通過 <顏色> 設置顏色 詳細資訊 — https://docs.advntr.dev/minimessage/index.html
+# 以及 https://www.birdflop.com/resources/rgb/ 上的所有格式
+# 您可以在一條訊息中同時使用所有格式。插件支援此功能。
+
+Plugin:
+  plugin-prefix: "&6CoolLobby &8|" #插件前綴。訊息中使用 {P}。
+  plugin-reload: "{P} &7插件已成功 &areload"
+  plugin-has-error: "{P} &7發生錯誤: &c{ERROR}"
+  plugin-has-error-enable: "{P} &7啟動插件時發生錯誤: &c{ERROR}"
+  plugin-has-error-reload: "{P} &7重新加載插件時發生錯誤: &c{ERROR}"
+  plugin-use-latest-version: "{P} &7您正在使用插件的 &an最新版本"
+  plugin-use-outdated-version: "{P} &7您正在使用過時版本: &c{OUTDATED_VERS} \n&7建議安裝插件的最新版本: &6{LATEST_VERS} \n&7下載鏈接: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
+
+Messages:
+  command-permission-error: "{P} &c您沒有執行此命令的權限 O_o"
+  command-no-console-error: "{P} &c此命令僅對玩家有效！"
+  command-cooldown: "{P} &7請等待 &6{TIME} &7秒再嘗試此命令"
+  command-disable: "{P} &7此命令已被伺服器管理員禁用"
+  command-only-lobby-use: "{P} &7此命令僅在 &6{WORLD} 世界中有效"
+
+  command-main-message: "{P} &7插件命令幫助: \n\n
+    &e/fw &7— 啟動煙火 \n
+    &e/lt &7— 發出閃電 \n
+    &e/spit &7— 吐口水 \n
+    &e/fly &7— 切換飛行模式 \n
+    &e/cool-lobby &7— 發送此訊息 \n
+    &e/cool-lobby reload &7— 重新加載插件 \n\n
+  &7開發者: &6{DEVELOPER} \n
+  &7聯繫: <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
+
+  command-firework-message: "{P} &7煙火！"
+  command-lighting-message: "{P} &7閃電！"
+  command-spit-message: "{P} &7吐口水！"
+  command-fly-enable-message: "{P} &7飛行模式 &a已啟用！ &7現在您可以飛行"
+  command-fly-disable-message: "{P} &7飛行模式 &c已禁用！ &7現在您可以雙重跳躍"
+
+  player-join-message: "{P} &7歡迎, &6{NAME}!"
+  player-join-global-message: "{P} &6{NAME}&7 已加入伺服器"
+
+  player-leave-global-message: "{P} &6{NAME}&7 已離開我們的伺服器"
+
+  double-jump-jump-message: "{P} &7哇！多麼精彩的跳躍"
+  double-jump-cooldown-message: "{P} &7請等待 &6{TIME} &7秒再跳躍"
+
+Title:
+  player-join-title: "&6&l歡迎來到伺服器！"
+  player-join-subtitle: "&7在 &cAnarchy &7和 &cGrief &7模式下遊玩"
+
+# 請不要編輯此項
+config_version: 1.0

@@ -40,22 +40,15 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         switch (args[0]) {
             case "reload" -> {
                 if (hasPermission(sender)) {
-                    try {
-                        Main.reloadFiles();
-                        Main.reloadPrefix();
-                        Main.setWorldSettings();
-                        Main.registerCommands();
-                        Main.reloadEvents();
+                    Main.reloadFiles();
+                    Main.reloadPrefix();
+                    Main.setWorldSettings();
+                    Main.registerCommands();
+                    Main.reloadEvents();
 
-                        commandPlaceholders.addPlaceholder("{P}", getPrefix());
+                    commandPlaceholders.addPlaceholder("{P}", getPrefix());
+                    sender.sendMessage(PluginMessages.pluginReloadMessage(commandPlaceholders.getPlaceholders()));
 
-                        sender.sendMessage(PluginMessages.pluginReloadMessage(commandPlaceholders.getPlaceholders()));
-                    } catch (IOException e) {
-                        commandPlaceholders.addPlaceholder("{ERROR}", e.getMessage());
-                        sender.sendMessage(PluginMessages.pluginHasErrorMessageReload(commandPlaceholders.getPlaceholders()));
-
-                        throw new RuntimeException(e);
-                    }
                     return true;
                 }
 

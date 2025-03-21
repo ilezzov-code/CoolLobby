@@ -106,7 +106,7 @@ public class PluginMessages {
     }
 
     private static Component getComponent(final String key) {
-        final String message = getMessagesFile().getString(key);
+        final String message = getMessagesFile().getConfig().getString(key);
 
         return getLegacySerialize().serialize(message);
     }

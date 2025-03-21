@@ -4,6 +4,7 @@ import lombok.Getter;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -59,7 +60,6 @@ public final class Main extends JavaPlugin {
     private static List<String> pluginDevelopers;
     @Getter
     private static boolean outdatedVersion;
-    private final String PLUGIN_DIRECTORY = this.getDataPath().toString();
     private final int BS_STATS_PLUGIN_ID = 25190;
 
     //Managers
@@ -88,17 +88,12 @@ public final class Main extends JavaPlugin {
         instance = this;
         flyManager = new FlyManager();
 
-        try {
-            loadFiles();
-        } catch (Exception e) {
-            getPluginLogger().info("The configuration file could not be uploaded");
-            throw new RuntimeException(e);
-        }
+        loadFiles();
 
         final HashMap<String, String> dbArgs = new HashMap<>();
         dbArgs.put("PATH", getDBFilePath("data", "database.db"));
 
-        createDBConnection(getDatabaseFile().getString("database.type"), dbArgs);
+        createDBConnection(databaseFile.getString("database.type"), dbArgs);
 
         try {
             dbConnect.connect();
@@ -148,6 +143,7 @@ public final class Main extends JavaPlugin {
         enablePlaceholders.addPlaceholder("{DEVELOPER}", ListUtils.listToString(pluginDevelopers));
 
         DoubleJumpManager.start();
+
         final Metrics metrics = new Metrics(this, BS_STATS_PLUGIN_ID);
 
         sendEnableMessage(enablePlaceholders.getPlaceholders());
@@ -208,16 +204,17 @@ public final class Main extends JavaPlugin {
     private void createMetrics() {
     }
 
-    private void loadFiles() throws IOException {
-        configFile = FileManager.newFile("config.yml", "", PLUGIN_DIRECTORY);
-        messagesFile = FileManager.newFile(configFile.getString("language").concat(".yml"), "/messages", PLUGIN_DIRECTORY);
-        databaseFile = FileManager.newFile("database.yml", "/data", PLUGIN_DIRECTORY);
+    private void loadFiles() {
+        configFile = new PluginFile(this, "config.yml");
+        messagesFile = new PluginFile(this, "messages/".concat(configFile.getString("language").concat(".yml")));
+        databaseFile = new PluginFile(this, "data/database.yml");
+
     }
 
-    public static void reloadFiles() throws IOException {
-        configFile.reload();
-        messagesFile.reload();
-        databaseFile.reload();
+    public static void reloadFiles() {
+        configFile = new PluginFile(Main.getInstance(), "config.yml");
+        messagesFile = new PluginFile(Main.getInstance(), "messages/".concat(configFile.getString("language").concat(".yml")));
+        databaseFile = new PluginFile(Main.getInstance(), "data/database.yml");
     }
 
     public static void createDBConnection(final String dbType, final HashMap<String, String> dbArgs) {

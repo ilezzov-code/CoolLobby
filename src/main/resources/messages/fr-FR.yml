@@ -1,0 +1,53 @@
+#Le plugin prend en charge tous les types de formatage des messages.
+# LEGACY — Couleur avec & / § et HEX avec &#rrggbb / §#rrggbb ou &x&r&r&g&g&b&b / §x§r§r§g§g§b§b
+# LEGACY_ADVANCED — Couleur et HEX avec &##rrggbb / §##rrggbb
+# MINI_MESSAGE — Couleur avec <couleur> Plus de détails — https://docs.advntr.dev/minimessage/index.html
+# Et tous les formats disponibles sur https://www.birdflop.com/resources/rgb/
+# Vous pouvez utiliser tous les formats simultanément dans un même message. Le plugin le prend en charge.
+
+Plugin:
+  plugin-prefix: "&6CoolLobby &8|" #Le préfixe du plugin. Utilisez {P} dans les messages.
+  plugin-reload: "{P} &7Le plugin a été &arechargé &7avec succès"
+  plugin-has-error: "{P} &7Une erreur s'est produite : &c{ERROR}"
+  plugin-has-error-enable: "{P} &7Une erreur s'est produite lors du démarrage du plugin : &c{ERROR}"
+  plugin-has-error-reload: "{P} &7Une erreur s'est produite lors du rechargement du plugin : &c{ERROR}"
+  plugin-use-latest-version: "{P} &7Vous utilisez la &adernière &7version du plugin"
+  plugin-use-outdated-version: "{P} &7Vous utilisez une version obsolète : &c{OUTDATED_VERS} \n&7Il est recommandé d'installer la dernière version du plugin : &6{LATEST_VERS} \n&7Téléchargement : <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
+
+Messages:
+  command-permission-error: "{P} &cVous n'avez pas la permission d'exécuter cette commande O_o"
+  command-no-console-error: "{P} &cCette commande est uniquement disponible pour les joueurs !"
+  command-cooldown: "{P} &7Veuillez attendre &6{TIME} &7secondes avant d'utiliser cette commande à nouveau"
+  command-disable: "{P} &7Cette commande a été désactivée par l'administrateur du serveur"
+  command-only-lobby-use: "{P} &7Cette commande est uniquement disponible dans &6{WORLD}"
+
+  command-main-message: "{P} &7Aide pour les commandes du plugin : \n\n
+    &e/fw &7— lancer un feu d'artifice \n
+    &e/lt &7— invoquer la foudre \n
+    &e/spit &7— cracher \n
+    &e/fly &7— activer ou désactiver le mode vol \n
+    &e/cool-lobby &7— envoyer ce message \n
+    &e/cool-lobby reload &7— recharger le plugin \n\n
+  &7Développeur : &6{DEVELOPER} \n
+  &7Contact : <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
+
+  command-firework-message: "{P} &7Feu d'artifice !"
+  command-lighting-message: "{P} &7Foudre !"
+  command-spit-message: "{P} &7Crachat !"
+  command-fly-enable-message: "{P} &7Mode vol &aactivé ! &7Vous pouvez maintenant voler"
+  command-fly-disable-message: "{P} &7Mode vol &cdésactivé ! &7Vous pouvez maintenant faire un double saut"
+
+  player-join-message: "{P} &7Bienvenue, &6{NAME} !"
+  player-join-global-message: "{P} &6{NAME}&7 a rejoint le serveur"
+
+  player-leave-global-message: "{P} &6{NAME}&7 a quitté notre merveilleux serveur"
+
+  double-jump-jump-message: "{P} &7Wow ! Quel saut !"
+  double-jump-cooldown-message: "{P} &7Veuillez attendre &6{TIME} &7secondes avant de sauter à nouveau"
+
+Title:
+  player-join-title: "&6&lBienvenue sur le serveur !"
+  player-join-subtitle: "&7Wipe en &cAnarchie &7et &cGrief"
+
+# Ne pas modifier ceci
+config_version: 1.0

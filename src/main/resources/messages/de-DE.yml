@@ -1,0 +1,53 @@
+#Das Plugin unterstützt alle Arten der Nachrichtenformatierung.
+# LEGACY — Farbe durch & / § und HEX durch &#rrggbb / §#rrggbb oder &x&r&r&g&g&b&b / §x§r§r§g§g§b§b
+# LEGACY_ADVANCED — Farbe und HEX durch &##rrggbb / §##rrggbb
+# MINI_MESSAGE — Farbe durch <farbe> Mehr Details — https://docs.advntr.dev/minimessage/index.html
+# Und alle verfügbaren Formate unter https://www.birdflop.com/resources/rgb/
+# Sie können alle Formate gleichzeitig in einer Nachricht verwenden. Das Plugin unterstützt dies.
+
+Plugin:
+  plugin-prefix: "&6CoolLobby &8|" #Das Präfix des Plugins. Verwenden Sie {P} in Nachrichten
+  plugin-reload: "{P} &7Das Plugin wurde erfolgreich &aneu geladen"
+  plugin-has-error: "{P} &7Ein Fehler ist aufgetreten: &c{ERROR}"
+  plugin-has-error-enable: "{P} &7Ein Fehler ist beim Starten des Plugins aufgetreten: &c{ERROR}"
+  plugin-has-error-reload: "{P} &7Ein Fehler ist beim Neuladen des Plugins aufgetreten: &c{ERROR}"
+  plugin-use-latest-version: "{P} &7Sie verwenden die &aneueste &7Version des Plugins"
+  plugin-use-outdated-version: "{P} &7Sie verwenden eine veraltete Version: &c{OUTDATED_VERS} \n&7Es wird empfohlen, die neueste Version des Plugins zu installieren: &6{LATEST_VERS} \n&7Download: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
+
+Messages:
+  command-permission-error: "{P} &cSie haben keine Berechtigung, diesen Befehl auszuführen O_o"
+  command-no-console-error: "{P} &cDieser Befehl ist nur für Spieler verfügbar!"
+  command-cooldown: "{P} &7Bitte warten Sie &6{TIME} &7Sekunden, bevor Sie diesen Befehl erneut verwenden"
+  command-disable: "{P} &7Dieser Befehl wurde vom Serveradministrator deaktiviert"
+  command-only-lobby-use: "{P} &7Dieser Befehl ist nur in &6{WORLD} verfügbar"
+
+  command-main-message: "{P} &7Plugin-Befehlsübersicht: \n\n
+    &e/fw &7— ein Feuerwerk starten \n
+    &e/lt &7— Blitz einschlagen lassen \n
+    &e/spit &7— spucken \n
+    &e/fly &7— Flugmodus umschalten \n
+    &e/cool-lobby &7— diese Nachricht senden \n
+    &e/cool-lobby reload &7— Plugin neu laden \n\n
+  &7Entwickler: &6{DEVELOPER} \n
+  &7Kontakt: <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
+
+  command-firework-message: "{P} &7Feuerwerk!"
+  command-lighting-message: "{P} &7Blitz!"
+  command-spit-message: "{P} &7Spucken!"
+  command-fly-enable-message: "{P} &7Flugmodus &aaktiviert! &7Sie können jetzt fliegen"
+  command-fly-disable-message: "{P} &7Flugmodus &cdeaktiviert! &7Sie können jetzt doppelt springen"
+
+  player-join-message: "{P} &7Willkommen, &6{NAME}!"
+  player-join-global-message: "{P} &6{NAME}&7 ist dem Server beigetreten"
+
+  player-leave-global-message: "{P} &6{NAME}&7 hat unseren wundervollen Server verlassen"
+
+  double-jump-jump-message: "{P} &7Wow! Was für ein Sprung"
+  double-jump-cooldown-message: "{P} &7Bitte warten Sie &6{TIME} &7Sekunden, bevor Sie erneut springen"
+
+Title:
+  player-join-title: "&6&lWillkommen auf dem Server!"
+  player-join-subtitle: "&7Wipe auf &cAnarchie &7und &cGrief"
+
+# Nicht bearbeiten
+config_version: 1.0

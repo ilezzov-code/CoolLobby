@@ -48,3 +48,6 @@ Messages:
 Title:
   player-join-title: "&6&lДобро пожаловать на сервер!"
   player-join-subtitle: "&7Вайп на &cAnarchy &7и &cGrief"
+
+# Не редактируйте этот файл
+config_version: 1.0

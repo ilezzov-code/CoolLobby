@@ -2,3 +2,6 @@
 
 database:
   type: "SQLITE" #Only SQLITE
+
+# Don't edit this
+config_version: 1.0

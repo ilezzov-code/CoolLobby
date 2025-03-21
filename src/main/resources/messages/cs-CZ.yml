@@ -48,3 +48,6 @@ Messages:
 Title:
   player-join-title: "&6&lVítejte na serveru!"
   player-join-subtitle: "&7Užijte si &cAnarchy &7a &cGrief"
+
+# Neupravujte to
+config_version: 1.0

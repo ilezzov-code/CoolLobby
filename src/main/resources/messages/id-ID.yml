@@ -1,0 +1,53 @@
+#Plugin mendukung semua jenis pemformatan pesan.
+# LEGACY — Warna melalui & / § dan HEX melalui &#rrggbb / §#rrggbb atau &x&r&r&g&g&b&b / §x§r§r§g§g§b§b
+# LEGACY_ADVANCED — Warna dan HEX melalui &##rrggbb / §##rrggbb
+# MINI_MESSAGE — Warna melalui <warna> Lebih detail — https://docs.advntr.dev/minimessage/index.html
+# Dan semua format yang tersedia di https://www.birdflop.com/resources/rgb/
+# Anda dapat menggunakan semua format secara bersamaan dalam satu pesan. Plugin ini mendukungnya.
+
+Plugin:
+  plugin-prefix: "&6CoolLobby &8|" #Prefix plugin. Gunakan {P} dalam pesan.
+  plugin-reload: "{P} &7Plugin telah berhasil &adimuat ulang"
+  plugin-has-error: "{P} &7Terjadi kesalahan: &c{ERROR}"
+  plugin-has-error-enable: "{P} &7Terjadi kesalahan saat memulai plugin: &c{ERROR}"
+  plugin-has-error-reload: "{P} &7Terjadi kesalahan saat memuat ulang plugin: &c{ERROR}"
+  plugin-use-latest-version: "{P} &7Anda menggunakan versi &aterbaru &7dari plugin"
+  plugin-use-outdated-version: "{P} &7Anda menggunakan versi lama: &c{OUTDATED_VERS} \n&7Disarankan untuk menginstal versi terbaru: &6{LATEST_VERS} \n&7Unduh: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
+
+Messages:
+  command-permission-error: "{P} &cAnda tidak memiliki izin untuk menjalankan perintah ini O_o"
+  command-no-console-error: "{P} &cPerintah ini hanya tersedia untuk pemain!"
+  command-cooldown: "{P} &7Harap tunggu &6{TIME} &7detik sebelum menggunakan perintah ini lagi"
+  command-disable: "{P} &7Perintah ini telah dinonaktifkan oleh administrator server"
+  command-only-lobby-use: "{P} &7Perintah ini hanya tersedia di dunia &6{WORLD}"
+
+  command-main-message: "{P} &7Bantuan perintah plugin: \n\n
+    &e/fw &7— meluncurkan kembang api \n
+    &e/lt &7— memanggil petir \n
+    &e/spit &7— meludah \n
+    &e/fly &7— mengaktifkan atau menonaktifkan mode terbang \n
+    &e/cool-lobby &7— mengirim pesan ini \n
+    &e/cool-lobby reload &7— memuat ulang plugin \n\n
+  &7Pengembang: &6{DEVELOPER} \n
+  &7Kontak: <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
+
+  command-firework-message: "{P} &7Kembang api!"
+  command-lighting-message: "{P} &7Petir!"
+  command-spit-message: "{P} &7Meludah!"
+  command-fly-enable-message: "{P} &7Mode terbang &adiaktifkan! &7Sekarang Anda bisa terbang"
+  command-fly-disable-message: "{P} &7Mode terbang &cdinonaktifkan! &7Sekarang Anda bisa melakukan lompatan ganda"
+
+  player-join-message: "{P} &7Selamat datang, &6{NAME}!"
+  player-join-global-message: "{P} &6{NAME}&7 telah bergabung ke server"
+
+  player-leave-global-message: "{P} &6{NAME}&7 telah meninggalkan server"
+
+  double-jump-jump-message: "{P} &7Wow! Lompatan yang luar biasa"
+  double-jump-cooldown-message: "{P} &7Harap tunggu &6{TIME} &7detik sebelum melompat lagi"
+
+Title:
+  player-join-title: "&6&lSelamat Datang di Server!"
+  player-join-subtitle: "&7Wipe dalam &cAnarki &7dan &cGrief"
+
+# Jangan mengedit ini
+config_version: 1.0

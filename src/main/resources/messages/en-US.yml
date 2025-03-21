@@ -49,3 +49,6 @@ Messages:
 Title:
   player-join-title: "&6&lWelcome to the server!"
   player-join-subtitle: "&7Wipe on &cAnarchy &7and &cGrief"
+
+# Don't edit this
+config_version: 1.0
