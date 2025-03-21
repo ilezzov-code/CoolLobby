@@ -2,7 +2,7 @@ package ru.ilezzov.coollobby.enums;
 
 public enum Permission {
     MAIN("cool-lobby.*"),
-    NO_COOLDOWN("cool-lobby.no-cooldown"),
+    NO_COOLDOWN("cool-lobby.no_cooldown"),
     RELOAD("cool-lobby.reload"),
     FIREWORK("cool-lobby.fw"),
     LIGHTING("cool-lobby.lt"),
