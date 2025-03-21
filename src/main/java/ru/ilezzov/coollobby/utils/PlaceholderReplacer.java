@@ -1,4 +1,4 @@
-package ru.ilezzov.pluginBlank.utils;
+package ru.ilezzov.coollobby.utils;
 
 import java.util.HashMap;
 

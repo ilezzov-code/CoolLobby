@@ -1,14 +1,14 @@
-package ru.ilezzov.pluginBlank.events;
+package ru.ilezzov.coollobby.events;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import ru.ilezzov.pluginBlank.messages.PluginMessages;
+import ru.ilezzov.coollobby.messages.PluginMessages;
 
 import java.util.HashMap;
 
-import static ru.ilezzov.pluginBlank.Main.*;
+import static ru.ilezzov.coollobby.Main.*;
 
 public class PluginEvent implements Listener {
 

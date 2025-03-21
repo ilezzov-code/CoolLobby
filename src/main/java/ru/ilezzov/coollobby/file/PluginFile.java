@@ -1,4 +1,4 @@
-package ru.ilezzov.pluginBlank.models;
+package ru.ilezzov.coollobby.models;
 
 import org.yaml.snakeyaml.Yaml;
 
@@ -76,6 +76,19 @@ public class PluginFile {
             return ((Number) value).doubleValue();
         }
         throw new ClassCastException("The returned object is not a double. File: ".concat(fileName).concat(" Key: ").concat(key));
+    }
+
+    public long getLong(final String key) throws NullPointerException, ClassCastException {
+        final Object value = getValue(key);
+
+        if (value == null) {
+            throw new NullPointerException("The returned value is null. File: ".concat(fileName).concat(" Key: ").concat(key));
+        }
+
+        if (value instanceof Number) {
+            return ((Number) value).longValue();
+        }
+        throw new ClassCastException("The returned object is not a long. File: ".concat(fileName).concat(" Key: ").concat(key));
     }
 
     public boolean getBoolean(final String key) throws NullPointerException, ClassCastException {
