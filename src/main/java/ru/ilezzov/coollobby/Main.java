@@ -1,28 +1,36 @@
-package ru.ilezzov.pluginBlank;
+package ru.ilezzov.coollobby;
 
 import lombok.Getter;
+import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
+import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import ru.ilezzov.pluginBlank.commands.MainCommand;
-import ru.ilezzov.pluginBlank.events.PluginEvent;
-import ru.ilezzov.pluginBlank.events.VersionCheckEvent;
-import ru.ilezzov.pluginBlank.logging.Logger;
-import ru.ilezzov.pluginBlank.logging.PaperLogger;
-import ru.ilezzov.pluginBlank.manager.FileManager;
-import ru.ilezzov.pluginBlank.manager.VersionManager;
-import ru.ilezzov.pluginBlank.messages.PluginMessages;
-import ru.ilezzov.pluginBlank.models.PluginFile;
-import ru.ilezzov.pluginBlank.utils.LegacySerialize;
-import ru.ilezzov.pluginBlank.utils.ListUtils;
+import ru.ilezzov.coollobby.bStats.Metrics;
+import ru.ilezzov.coollobby.commands.*;
+import ru.ilezzov.coollobby.database.DBConnection;
+import ru.ilezzov.coollobby.database.H2Connection;
+import ru.ilezzov.coollobby.events.*;
+import ru.ilezzov.coollobby.logging.Logger;
+import ru.ilezzov.coollobby.logging.PaperLogger;
+import ru.ilezzov.coollobby.manager.*;
+import ru.ilezzov.coollobby.messages.ConsoleMessages;
+import ru.ilezzov.coollobby.file.PluginFile;
+import ru.ilezzov.coollobby.models.DefaultPlaceholder;
+import ru.ilezzov.coollobby.utils.LegacySerialize;
+import ru.ilezzov.coollobby.utils.ListUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Paths;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
 import static org.bukkit.Bukkit.*;
-import static ru.ilezzov.pluginBlank.messages.PluginMessages.*;
+import static ru.ilezzov.coollobby.messages.PluginMessages.*;
 
 public final class Main extends JavaPlugin {
     //Serializer message color
@@ -37,9 +45,8 @@ public final class Main extends JavaPlugin {
     private static Main instance;
 
     //Plugin urls
-    private final String urlToFileVersion = "https://raw.githubusercontent.com/ilezzov-code/Plugin-Blank-for-Paper/main/VERSION";
-    @Getter
-    private static final String urlToDownloadLatestVersion = "https://modrinth.com/plugin/plugin_blank";
+    private final String URL_TO_FILE_VERSION = "https://raw.githubusercontent.com/ilezzov-code/Plugin-Blank/main/VERSION";
+    public static final String URL_TO_DOWNLOAD_LATEST_VERSION = "https://modrinth.com/plugin/CoolLobby";
 
     //Plugin info
     @Getter
@@ -52,114 +59,187 @@ public final class Main extends JavaPlugin {
     private static List<String> pluginDevelopers;
     @Getter
     private static boolean outdatedVersion;
+    private final String PLUGIN_DIRECTORY = this.getDataPath().toString();
+    private final int BS_STATS_PLUGIN_ID = 25190;
 
     //Managers
-    private static FileManager fileManager;
     @Getter
     private static VersionManager versionManager;
+    @Getter
+    private static WorldManager worldManager;
+    @Getter
+    private static FlyManager flyManager;
+
+    //Database
+    @Getter
+    private static DBConnection dbConnect;
+
 
     //Files
     @Getter
-    private static PluginFile pluginConfig;
+    private static PluginFile configFile;
     @Getter
-    private static PluginFile messages;
+    private static PluginFile messagesFile;
     @Getter
-    private static PluginFile database;
+    private static PluginFile databaseFile;
 
     @Override
     public void onEnable() {
         instance = this;
-
-        fileManager = new FileManager();
-        final HashMap<String, String> enablePlaceholders = new HashMap<>();
+        flyManager = new FlyManager();
 
         try {
             loadFiles();
         } catch (Exception e) {
+            getPluginLogger().info("The configuration file could not be uploaded");
             throw new RuntimeException(e);
         }
 
-        prefix = messages.getString("prefix");
+        final HashMap<String, String> dbArgs = new HashMap<>();
+        dbArgs.put("PATH", getDBFilePath("data", "database.db"));
+
+        createDBConnection(getDatabaseFile().getString("database.type"), dbArgs);
+
+        try {
+            dbConnect.connect();
+        } catch (SQLException e) {
+            getPluginLogger().info("Couldn't connect to the database");
+            throw new RuntimeException(e);
+        }
+
+        prefix = messagesFile.getString("Plugin.plugin-prefix");
         pluginVersion = this.getPluginMeta().getVersion();
         pluginDevelopers = this.getPluginMeta().getAuthors();
         pluginContactLink = this.getPluginMeta().getWebsite();
 
-        enablePlaceholders.put("{P}", prefix);
+        final DefaultPlaceholder enablePlaceholders = new DefaultPlaceholder();
 
-        if(pluginConfig.getBoolean("check_updates")) {
+        if(configFile.getBoolean("check_updates")) {
             try {
-                versionManager = new VersionManager(pluginVersion, urlToFileVersion);
+                versionManager = new VersionManager(pluginVersion, URL_TO_FILE_VERSION);
 
                 if (versionManager.check()) {
-                    pluginLogger.info(pluginLatestVersionMessage(enablePlaceholders));
+                    pluginLogger.info(pluginLatestVersionMessage(enablePlaceholders.getPlaceholders()));
                     outdatedVersion = false;
                 } else {
-                    enablePlaceholders.put("{OUTDATED_VERS}", pluginVersion);
-                    enablePlaceholders.put("{LATEST_VERS}", versionManager.getCurrentPluginVersion());
-                    enablePlaceholders.put("{DOWNLOAD_LINK}", urlToDownloadLatestVersion);
-                    pluginLogger.info(pluginOutdatedVersionMessage(enablePlaceholders));
+                    enablePlaceholders.addPlaceholder("{OUTDATED_VERS}", pluginVersion);
+                    enablePlaceholders.addPlaceholder("{LATEST_VERS}", versionManager.getCurrentPluginVersion());
+                    enablePlaceholders.addPlaceholder("{DOWNLOAD_LINK}", URL_TO_DOWNLOAD_LATEST_VERSION);
+
+                    pluginLogger.info(pluginOutdatedVersionMessage(enablePlaceholders.getPlaceholders()));
                     outdatedVersion = true;
                 }
             } catch (URISyntaxException e) {
-                enablePlaceholders.put("{ERROR}", "Invalid link to the GitHub file. link = ".concat(versionManager.getUrlToFileVersion()));
-                pluginLogger.info(pluginHasErrorMessageEnable(enablePlaceholders));
+                enablePlaceholders.addPlaceholder("{ERROR}", "Invalid link to the GitHub file. link = ".concat(versionManager.getUrlToFileVersion()));
+                pluginLogger.info(pluginHasErrorMessageEnable(enablePlaceholders.getPlaceholders()));
 
-                disablePlugin(this);
+                disablePlugin(Main.getInstance());
             } catch (IOException | InterruptedException e ) {
-                enablePlaceholders.put("{ERROR}", "Couldn't send a request to get the plugin version");
-                pluginLogger.info(pluginHasErrorMessageEnable(enablePlaceholders));
+                enablePlaceholders.addPlaceholder("{ERROR}", "Couldn't send a request to get the plugin version");
+                pluginLogger.info(pluginHasErrorMessageEnable(enablePlaceholders.getPlaceholders()));
             }
         }
 
+        setWorldSettings();
         registerCommands();
         registerEvents();
 
-        enablePlaceholders.put("{VERSION}", pluginVersion);
-        enablePlaceholders.put("{DEVELOPER}", ListUtils.listToString(pluginDevelopers));
+        enablePlaceholders.addPlaceholder("{VERSION}", pluginVersion);
+        enablePlaceholders.addPlaceholder("{DEVELOPER}", ListUtils.listToString(pluginDevelopers));
 
-        pluginLogger.info(pluginEnableMessage(enablePlaceholders));
+        DoubleJumpManager.start();
+        final Metrics metrics = new Metrics(this, BS_STATS_PLUGIN_ID);
+
+        sendEnableMessage(enablePlaceholders.getPlaceholders());
     }
 
     @Override
     public void onDisable() {
-        if(pluginConfig != null) {
-            HashMap<String, String> enablePlaceholders = new HashMap<>();
-            enablePlaceholders.put("{P}", prefix);
+        sendDisableMessage();
+    }
 
-            pluginLogger.info(PluginMessages.pluginDisableMessage(enablePlaceholders));
-        } else {
-            pluginLogger.info("&cПлагин PluginBlank успешно выключен!");
+    private void sendEnableMessage(final HashMap<String, String> enablePlaceholders) {
+        for (final Component component : ConsoleMessages.pluginEnableMessage(enablePlaceholders)) {
+            pluginLogger.info(component);
         }
     }
 
+    private void sendDisableMessage() {
+        for (final Component component : ConsoleMessages.pluginDisableMessage()) {
+            pluginLogger.info(component);
+        }
+    }
+
+    private String getDBFilePath(final String filePath, final String fileName) {
+        return new File(Paths.get(this.getDataPath().toString(), filePath).toString(), fileName).getPath();
+    }
+
     //Register your commands. Add a new command in plugin.yml to register her
-    private void registerCommands() {
-        final PluginCommand mainCommand = getCommand("plugin-blank");
+    public static void registerCommands() {
+        final PluginCommand mainCommand = Main.getInstance().getCommand("cool-lobby");
 
         if(mainCommand != null) {
             mainCommand.setExecutor(new MainCommand());
             mainCommand.setTabCompleter(new MainCommand());
         }
+
+        Main.getInstance().getCommand("firework").setExecutor(new FireworkCommand());
+        Main.getInstance().getCommand("lighting").setExecutor(new LightingCommand());
+        Main.getInstance().getCommand("spit").setExecutor(new SpitCommand());
+        Main.getInstance().getCommand("fly").setExecutor(new FlyCommand());
     }
 
     //Register your events. Add a new event class to register her
-    private void registerEvents() {
-        getPluginManager().registerEvents(new PluginEvent(), this);
-        getPluginManager().registerEvents(new VersionCheckEvent(), this);
+    private static void registerEvents() {
+        getPluginManager().registerEvents(new PlayerJoinEvent(), Main.getInstance());
+        getPluginManager().registerEvents(new VersionCheckEvent(), Main.getInstance());
+        getPluginManager().registerEvents(new PlayerDamageEvent(), Main.getInstance());
+        getPluginManager().registerEvents(new PlayerHungerEvent(), Main.getInstance());
+        getPluginManager().registerEvents(new PlayerLeaveEvent(), Main.getInstance());
+        getPluginManager().registerEvents(new PlayerChangeWorldEvent(), Main.getInstance());
+        getPluginManager().registerEvents(new DoubleJumpEvent(), Main.getInstance());
+        getPluginManager().registerEvents(new PlayerChangeGamemodeEvent(), Main.getInstance());
     }
 
-    private void disablePlugin(Plugin plugin) {
+    private void disablePlugin(final Plugin plugin) {
         getPluginManager().disablePlugin(plugin);
     }
 
-    public static void loadFiles() throws IOException {
-        pluginConfig = fileManager.newFile("config.yml", "");
-        messages = fileManager.newFile(pluginConfig.getString("language").concat(".yml"), "/messages");
-        database = fileManager.newFile("db-settings.yml", "/database");
+    private void createMetrics() {
+    }
+
+    private void loadFiles() throws IOException {
+        configFile = FileManager.newFile("config.yml", "", PLUGIN_DIRECTORY);
+        messagesFile = FileManager.newFile(configFile.getString("language").concat(".yml"), "/messages", PLUGIN_DIRECTORY);
+        databaseFile = FileManager.newFile("database.yml", "/data", PLUGIN_DIRECTORY);
+    }
+
+    public static void reloadFiles() throws IOException {
+        configFile.reload();
+        messagesFile.reload();
+        databaseFile.reload();
+    }
+
+    public static void createDBConnection(final String dbType, final HashMap<String, String> dbArgs) {
+        switch (dbType.toLowerCase()) {
+            default -> dbConnect = new H2Connection(dbArgs.get("PATH"));
+        }
     }
 
     public static void reloadPrefix() {
-        prefix = messages.getString("prefix");
+        prefix = messagesFile.getString("Plugin.plugin-prefix");
     }
 
+    public static void reloadEvents() {
+        HandlerList.unregisterAll();
+        registerEvents();
+    }
+
+    public static void setWorldSettings() {
+        worldManager = new WorldManager(Bukkit.getWorld(configFile.getString("lobby_settings.world")));
+
+        worldManager.setDefaultTime();
+        worldManager.setDefaultWeather();
+        worldManager.setGamerules();
+    }
 }

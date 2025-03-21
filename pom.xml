@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.ilezzov</groupId>
-    <artifactId>PluginBlank</artifactId>
+    <artifactId>CoolLobby</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>PluginBlank</name>
+    <name>CoolLobby</name>
 
     <properties>
         <java.version>21</java.version>
@@ -52,7 +52,7 @@
                 <filtering>true</filtering>
             </resource>
             <resource>
-                <directory>src/main/resources/database</directory>
+                <directory>src/main/resources/data</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
@@ -71,6 +71,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.3.232</version>
+        </dependency>
+        <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
             <version>1.21.4-R0.1-SNAPSHOT</version>
@@ -86,11 +91,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>2.3.232</version>
         </dependency>
     </dependencies>
 </project>

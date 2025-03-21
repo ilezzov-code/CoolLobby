@@ -1,18 +1,22 @@
 package ru.ilezzov.coollobby.enums;
 
-public enum Permissions {
+public enum Permission {
     MAIN("cool-lobby.*"),
     NO_COOLDOWN("cool-lobby.no-cooldown"),
     RELOAD("cool-lobby.reload"),
-    FLY("cool-lobby.fly");
+    FIREWORK("cool-lobby.fw"),
+    LIGHTING("cool-lobby.lt"),
+    SPIT("cool-lobby.spit"),
+    FLY("cool-lobby.fly"),
+    DOUBLE_JUMP("cool-lobby.double_jump");
 
-    private final String node;
+    private final String permission;
 
-    Permission(String node) {
-        this.node = node;
+    Permission(final String permission) {
+        this.permission = permission;
     }
 
-    public String getNode() {
-        return node;
+    public String getPermission() {
+        return permission;
     }
 }

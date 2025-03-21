@@ -1,4 +1,4 @@
-package ru.ilezzov.pluginBlank.logging;
+package ru.ilezzov.coollobby.logging;
 
 import net.kyori.adventure.text.Component;
 

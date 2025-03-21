@@ -1,0 +1,4 @@
+# Database settings
+
+database:
+  type: "SQLITE" #Only SQLITE

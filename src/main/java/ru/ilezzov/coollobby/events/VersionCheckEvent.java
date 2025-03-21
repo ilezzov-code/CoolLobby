@@ -1,33 +1,38 @@
-package ru.ilezzov.pluginBlank.events;
+package ru.ilezzov.coollobby.events;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import ru.ilezzov.pluginBlank.Main;
-import ru.ilezzov.pluginBlank.messages.PluginMessages;
-import ru.ilezzov.pluginBlank.utils.Permissions;
-
-import java.util.HashMap;
+import ru.ilezzov.coollobby.Main;
+import ru.ilezzov.coollobby.messages.PluginMessages;
+import ru.ilezzov.coollobby.models.DefaultPlaceholder;
+import ru.ilezzov.coollobby.utils.PermissionsChecker;
 
 public class VersionCheckEvent implements Listener {
+    private final DefaultPlaceholder eventPlaceholders = new DefaultPlaceholder();
+    private final boolean isEnable = (Main.getConfigFile().getBoolean("check_updates"));
 
     @EventHandler
-    public void playerJoinEvent(PlayerJoinEvent event) {
-        if (Main.getPluginConfig().getBoolean("check_updates")) {
-            final Player player = event.getPlayer();
-
-            if(Main.isOutdatedVersion()) {
-                if (Permissions.hasPermission(player, Permissions.MAIN_PERMISSIONS)) {
-                    final HashMap<String, String> eventPlaceholders = new HashMap<>();
-                    eventPlaceholders.put("{P}", Main.getPrefix());
-                    eventPlaceholders.put("{OUTDATED_VERS}", Main.getPluginVersion());
-                    eventPlaceholders.put("{LATEST_VERS}", Main.getVersionManager().getCurrentPluginVersion());
-                    eventPlaceholders.put("{DOWNLOAD_LINK}", Main.getUrlToDownloadLatestVersion());
-
-                    player.sendMessage(PluginMessages.pluginOutdatedVersionMessage(eventPlaceholders));
-                }
-            }
+    public void onPlayerJoinEvent(final PlayerJoinEvent event) {
+        if (!isEnable) {
+            return;
         }
+
+        if (!Main.isOutdatedVersion()) {
+            return;
+        }
+
+        final Player player = event.getPlayer();
+
+        if (!PermissionsChecker.hasPermission(player)) {
+            return;
+        }
+
+        eventPlaceholders.addPlaceholder("{OUTDATED_VERS}", Main.getPluginVersion());
+        eventPlaceholders.addPlaceholder("{LATEST_VERS}", Main.getVersionManager().getCurrentPluginVersion());
+        eventPlaceholders.addPlaceholder("{DOWNLOAD_LINK}", Main.URL_TO_DOWNLOAD_LATEST_VERSION);
+
+        player.sendMessage(PluginMessages.pluginOutdatedVersionMessage(eventPlaceholders.getPlaceholders()));
     }
 }

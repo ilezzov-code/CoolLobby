@@ -1,19 +1,13 @@
-package ru.ilezzov.pluginBlank.utils;
+package ru.ilezzov.coollobby.utils;
 
 import java.util.List;
 
 public class ListUtils {
-    public static String listToString(List<String> list) {
-        final StringBuilder stringBuilder = new StringBuilder();
-
-        for (int i = 0; i < list.size(); i++) {
-            stringBuilder.append(list.get(i));
-
-            if (list.size() - i != 1) {
-                stringBuilder.append(", ");
-            }
+    public static String listToString(final List<String> list) {
+        if (list == null || list.isEmpty()) {
+            return "";
         }
 
-        return stringBuilder.toString();
+        return String.join(", ", list);
     }
 }

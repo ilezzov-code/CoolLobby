@@ -1,18 +1,170 @@
-#██████╗░██╗░░░░░██╗░░░██╗░██████╗░██╗███╗░░██╗██████╗░██╗░░░░░░█████╗░███╗░░██╗██╗░░██╗
-#██╔══██╗██║░░░░░██║░░░██║██╔════╝░██║████╗░██║██╔══██╗██║░░░░░██╔══██╗████╗░██║██║░██╔╝
-#██████╔╝██║░░░░░██║░░░██║██║░░██╗░██║██╔██╗██║██████╦╝██║░░░░░███████║██╔██╗██║█████═╝░
-#██╔═══╝░██║░░░░░██║░░░██║██║░░╚██╗██║██║╚████║██╔══██╗██║░░░░░██╔══██║██║╚████║██╔═██╗░
-#██║░░░░░███████╗╚██████╔╝╚██████╔╝██║██║░╚███║██████╦╝███████╗██║░░██║██║░╚███║██║░╚██╗
-#╚═╝░░░░░╚══════╝░╚═════╝░░╚═════╝░╚═╝╚═╝░░╚══╝╚═════╝░╚══════╝╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝
+# ░█████╗░░█████╗░░█████╗░██╗░░░░░██╗░░░░░░█████╗░██████╗░██████╗░██╗░░░██╗
+# ██╔══██╗██╔══██╗██╔══██╗██║░░░░░██║░░░░░██╔══██╗██╔══██╗██╔══██╗╚██╗░██╔╝
+# ██║░░╚═╝██║░░██║██║░░██║██║░░░░░██║░░░░░██║░░██║██████╦╝██████╦╝░╚████╔╝░
+# ██║░░██╗██║░░██║██║░░██║██║░░░░░██║░░░░░██║░░██║██╔══██╗██╔══██╗░░╚██╔╝░░
+# ╚█████╔╝╚█████╔╝╚█████╔╝███████╗███████╗╚█████╔╝██████╦╝██████╦╝░░░██║░░░
+# ░╚════╝░░╚════╝░░╚════╝░╚══════╝╚══════╝░╚════╝░╚═════╝░╚═════╝░░░░╚═╝░░░
 
-#Developer / Разработчик: ILeZzoV
-#Contact with me / Связаться: https://t.me/ilezovofficial
-#GitHub: https://github.com/ilezzov-code
+# Developer / Разработчик: ILeZzoV
 
-#Supporting messages languages: Russian (ru-RU), English (en-US)
-#Доступные языки сообщений: Русский (ru-RU), Английский (en-US)
-language: "en-US"
+# Socials / Ссылки:
+# • Contact with me / Связаться: https://t.me/ilezovofficial
+# • Telegram Channel / Телеграм канал: https://t.me/ilezzov
+# • GitHub: https://github.com/ilezzov-code
 
-#Check the plugin for updates
-#Проверять плагин на наличие обновлений
+# Plugin Pages / Страницы плагинов:
+# • Modrinth: https://modrinth.com/plugin/cool-lobby
+# • Spigot: https://www.spigotmc.org/resources/coallobby-fun-commands-for-your-lobby-1-13-1-19x.108887/
+# • CurseForge: https://www.curseforge.com/minecraft/bukkit-plugins/coollobby
+
+# By me coffee / Поддержать разработчика:
+# • DA: https://www.donationalerts.com/r/ilezzov_dev
+# • YooMoney: https://yoomoney.ru/fundraise/193CD8F13OH.250319
+# • Telegram Gift: https://t.me/ilezovofficial
+# • TON: UQCsMXvc2og_Sn91TJ8NsHTU9qyvx6qJPZ4TjEJTPdUY0Fes
+# • Card: 5536914188326494
+
+# Supporting messages languages: Russian (ru-RU), English (en-US), Český (cs-CZ)
+# Доступные языки сообщений: Русский (ru-RU), Английский (en-US), Чешский (cs-CZ)
+language: "ru-RU"
+
+# Check the plugin for updates
+# Проверять плагин на наличие обновлений
 check_updates: true
+
+lobby_settings:
+  # The name of the lobby world
+  # Имя lobby мира
+  world: "world"
+
+  # Disable damage
+  # Отключить получение урона
+  disable_damage: true
+
+  # Disable hunger
+  # Отключить голод
+  disable_hunger: true
+
+  # Disable daylight cycle
+  # Отключить смены времени суток
+  disable_daylight_cycle: true
+
+  # Disable mob spawning
+  # Отключить спавн мобов
+  disable_mob_spawning: true
+
+  # Disable fire tick
+  # Отключить распространение огня
+  disable_fire_tick: true
+
+  # Disable weather cycle
+  # Отключить смену погоды
+  disable_weather_cycle: true
+
+  # Default time value
+  # Стандартное время суток
+  default_time:
+    enable: true
+    value: 1000
+
+  # Default weather
+  # Стандартная погода
+  default_weather:
+    enable: true
+    type: CLEAR # CLEAR, RAIN, THUNDER
+
+  # Default gamemode
+  # Стандартный игровой режим
+  default_gamemode:
+    enable: true
+    type: ADVENTURE
+
+  # Player XP Level
+  # Уровень игрока
+  default_level:
+    enable: true
+    level: 2025
+
+# /firework command. Permission: cool-lobby.fw
+# /firework команда. Права: cool-lobby.fw
+fw_command:
+  # Enable the command / Включить команду
+  enable: true
+  # Use command only lobby world
+  only_lobby: true
+  # Cooldown command in seconds / Задержка на использование в секундах
+  cooldown: 10
+
+# /lighting command. Permission: cool-lobby.lt
+# /lighting команда. Права: cool-lobby.lt
+lt_command:
+  # Enable the command / Включить команду
+  enable: true
+  # Use command only lobby world
+  only_lobby: true
+  # Cooldown command in seconds / Задержка на использование в секундах
+  cooldown: 10
+
+# /spit command. Permission: cool-lobby.spit
+# /spit команда. Права: cool-lobby.spit
+spit_command:
+  # Enable the command / Включить команду
+  enable: true
+  # Use command only lobby world
+  only_lobby: true
+  # Cooldown command in seconds / Задержка на использование в секундах
+  cooldown: 10
+
+# /fly command. Permission: cool-lobby.fly
+# /fly команда. Права: cool-lobby.fly
+fly_command:
+  # Enable the command / Включить команду
+  enable: true
+  # Use command only lobby world
+  only_lobby: true
+  # Cooldown command in seconds / Задержка на использование в секундах
+  cooldown: 10
+
+# Double Jump
+# Двойной прыжок
+double_jump:
+  enable: true
+  cooldown: 10
+  # Use double jump only lobby world
+  only_lobby: true
+  double_jump_sound:
+    enable: true
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+  double_jump_particle:
+    enable: true
+    particle: FLAME
+
+# Join actions
+# Действия при входе игрока
+player_join:
+  join_message:
+    enable: true
+  global_join_message:
+    enable: true
+  join_title:
+    enable: true
+    fade_in: 1 # Time when the title appeared in seconds / Время появления текста в секундах
+    fade_out: 1 # Time when the title disappeared in seconds / Время исчезновения текста в секундах
+    stay: 5 # Stay time in milliseconds / Время пребывания в миллисекундах
+  join_sound:
+    enable: true
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+# Leave actions
+# Действия при выходе игрока
+player_leave:
+  global_leave_message:
+    enable: true
+
+# Don't edit this
+# Не редактируйте это
+version: 1.0
+
+
+
+

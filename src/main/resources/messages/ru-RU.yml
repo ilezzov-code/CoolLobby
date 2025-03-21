@@ -5,22 +5,46 @@
 # И все форматы доступные на https://www.birdflop.com/resources/rgb/
 # Вы можете использовать все форматы одновременно в одном сообщении. Плагин это поддерживает
 
-#Префикс плагина. Используйте {P} в сообщениях
-prefix: "&6PluginBlank &8|"
+Plugin:
+  plugin-prefix: "&6CoolLobby &8|" #Префикс плагина. Используйте {P} в сообщениях
+  plugin-reload: "{P} &7Плагин успешно &aперезагружен"
+  plugin-has-error: "{P} &7Возникла какая-то ошибка: &c{ERROR}"
+  plugin-has-error-enable: "{P} &7Возникла ошибка при запуске плагина: &c{ERROR}"
+  plugin-has-error-reload: "{P} &7Возникла ошибка при перезагрузке плагина: &c{ERROR}"
+  plugin-use-latest-version: "{P} &7Вы используете &aпоследнюю &7версию плагина"
+  plugin-use-outdated-version: "{P} &7Вы используете устаревшую версию: &c{OUTDATED_VERS} \n&7Рекомендуем установить последнюю версию плагина: &6{LATEST_VERS} \n&7Скачать: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
 
-plugin_messages:
-  enable: "{P} &7Плагин &7успешно &aзапущен! \n{P} \n&7Версия: &6{VERSION} \n{P} &7Разработчик: &e{DEVELOPER}"
-  disable: "{P} &7Плагин успешно &cвыключен!"
-  reload: "{P} &7Плагин успешно &aперезагружен"
-  no_perms: "{P} &cУ вас нет прав для выполнения этой команды O_o"
-  no_console: "{P} &cЭта команда доступна только для игроков!"
-  has_error_enable: "{P} &7Возникла ошибка при запуске плагина: &c{ERROR}"
-  has_error_reload: "{P} &7Возникла ошибка при перезагрузке плагина: &c{ERROR}"
-  latest_version: "{P} &7Вы используете &aпоследнюю &7версию плагина"
-  outdated_version: "{P} &7Вы используете устаревшую версию: &c{OUTDATED_VERS} \n&7Рекомендуем установить последнюю версию плагина: &6{LATEST_VERS} \n&7Скачать: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
+Messages:
+  command-permission-error: "{P} &cУ вас нет прав для выполнения этой команды O_o"
+  command-no-console-error: "{P} &cЭта команда доступна только для игроков!"
+  command-cooldown: "{P} &7Подождите еще &6{TIME} &7сек. перед выполнением этой команды"
+  command-disable: "{P} &7Эта команда отключена администратором сервера"
+  command-only-lobby-use: "{P} &7Эта команда доступна только в &6{WORLD}"
 
-event_messages:
-  player_join: "{P} &7Добро пожаловать, &6{NAME}!"
+  command-main-message: "{P} &7Помощь по командам плагина: \n\n
+    &e/fw &7— запустить фейерверк \n
+    &e/lt &7— ударить молнией \n
+    &e/spit &7— плюнуть \n
+    &e/fly &7— включить/выключить режим полета \n
+    &e/cool-lobby &7— отправить это сообщение \n
+    &e/cool-lobby reload&7— перезагрузить плагин \n\n
+  &7Разработчик: &6{DEVELOPER} \n
+  &7Связаться: <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
 
-command_messages:
-  main_command: "{P} &7Помощь по командам плагина: \n\n&e/plugin-blank &7— отправить это сообщение \n&e/plugin-blank reload&7— перезагрузить плагин \n\n&7Разработчик: &6{DEVELOPER} \n&7Связаться: <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
+  command-firework-message: "{P} &7Салют!"
+  command-lighting-message: "{P} &7Молния!"
+  command-spit-message: "{P} &7Плевок!"
+  command-fly-enable-message: "{P} &7Режим полета &aвключен! &7Теперь вы можете летать"
+  command-fly-disable-message: "{P} &7Режим полета &cвыключен! &7Теперь вы можете делать двойной прыжок"
+
+  player-join-message: "{P} &7Добро пожаловать, &6{NAME}!"
+  player-join-global-message: "{P} &6{NAME}&7, залетел к нам на сервер"
+
+  player-leave-global-message: "{P} &6{NAME}&7, покинул наш прекрасный сервер"
+
+  double-jump-jump-message: "{P} &7Вау! Вот это прыжок"
+  double-jump-cooldown-message: "{P} &7Подождите ещё &6{TIME} &7сек. перед новым прыжком"
+
+Title:
+  player-join-title: "&6&lДобро пожаловать на сервер!"
+  player-join-subtitle: "&7Вайп на &cAnarchy &7и &cGrief"

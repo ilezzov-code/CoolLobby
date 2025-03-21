@@ -1,14 +1,28 @@
-name: PluginBlank
+name: CoolLobby
 version: '1.0'
-main: ru.ilezzov.pluginBlank.Main
+main: ru.ilezzov.coollobby.Main
 api-version: '1.21'
-prefix: PluginBlank
-load: STARTUP
+prefix: CoolLobby
+load: POSTWORLD
 authors: [ ILeZzoV ]
-description: The PluginBlank for your Minecraft Plugin
+description: Make your stay at Lobby more fun
 website: https://t.me/ilezzov
 commands:
-  plugin-blank:
-    description: The main command
-    aliases: [ pb ]
-    usage: /plugin-blank
+  cool-lobby:
+    description: The main plugin command
+    aliases: [ cl, coollobby ]
+    usage: /cool-lobby
+  firework:
+    description: Start the fireworks
+    aliases: [ fw ]
+    usage: /firework
+  lighting:
+    description: Summon lighting
+    aliases: [ lt ]
+    usage: /lighting
+  spit:
+    description: Spit
+    usage: /spit
+  fly:
+    description: Enable flight mode
+    usage: /fly

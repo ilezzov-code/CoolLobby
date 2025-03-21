@@ -1,0 +1,50 @@
+# Plugin podporuje všechny typy formátování zpráv.
+# LEGACY — Barvy pomocí & / § a HEX pomocí &#rrggbb / §#rrggbb nebo &x&r&r&g&g&b&b / §x§r§r§g§g§b§b
+# LEGACY_ADVANCED — Barvy a HEX pomocí &##rrggbb / §##rrggbb
+# MINI_MESSAGE — Barvy pomocí <barva> Více informací — https://docs.advntr.dev/minimessage/index.html
+# A všechny formáty dostupné na https://www.birdflop.com/resources/rgb/
+# Můžete používat všechny formáty současně v jedné zprávě. Plugin to podporuje.
+
+Plugin:
+  plugin-prefix: "&6CoolLobby &8|" ## Prefix pluginu. Použijte {P} ve zprávách.
+  plugin-reload: "{P} &7Plugin byl úspěšně &anahrán znovu"
+  plugin-has-error: "{P} &7Došlo k chybě: &c{ERROR}"
+  plugin-has-error-enable: "{P} &7Došlo k chybě při spouštění pluginu: &c{ERROR}"
+  plugin-has-error-reload: "{P} &7Došlo k chybě při znovunačítání pluginu: &c{ERROR}"
+  plugin-use-latest-version: "{P} &7Používáte &anov nejnovější &7verzi pluginu"
+  plugin-use-outdated-version: "{P} &7Používáte zastaralou verzi: &c{OUTDATED_VERS} \n&7Doporučuje se nainstalovat nejnovější verzi pluginu: &6{LATEST_VERS} \n&7Stáhnout: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
+
+Messages:
+  command-permission-error: "{P} &cNemáte oprávnění k provedení tohoto příkazu O_o"
+  command-no-console-error: "{P} &cTento příkaz je dostupný pouze hráčům!"
+  command-cooldown: "{P} &7Počkejte prosím &6{TIME} &7sekund před opětovným použitím tohoto příkazu"
+  command-disable: "{P} &7Tento příkaz byl zakázán administrátorem serveru"
+  command-only-lobby-use: "{P} &7Tento příkaz je dostupný pouze ve světě &6{WORLD}"
+
+  command-main-message: "{P} &7Nápověda k příkazům pluginu: \n\n
+    &e/fw &7— odpálit ohňostroj \n
+    &e/lt &7— udeřit bleskem \n
+    &e/spit &7— plivnout \n
+    &e/fly &7— přepnout letový režim \n
+    &e/cool-lobby &7— odeslat tuto zprávu \n
+    &e/cool-lobby reload &7— znovunačíst plugin \n\n
+  &7Vývojář: &6{DEVELOPER} \n
+  &7Kontakt: <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
+
+  command-firework-message: "{P} &7Ohňostroj!"
+  command-lighting-message: "{P} &7Blesk!"
+  command-spit-message: "{P} &7Plivnutí!"
+  command-fly-enable-message: "{P} &7Letový režim &apovolen! &7Nyní můžete létat"
+  command-fly-disable-message: "{P} &7Letový režim &czakázán! &7Nyní můžete použít dvojitý skok"
+
+  player-join-message: "{P} &7Vítej, &6{NAME}!"
+  player-join-global-message: "{P} &6{NAME}&7 se připojil k serveru"
+
+  player-leave-global-message: "{P} &6{NAME}&7 opustil náš úžasný server"
+
+  double-jump-jump-message: "{P} &7Wow! Jaký skok"
+  double-jump-cooldown-message: "{P} &7Počkejte prosím &6{TIME} &7sekund před dalším skokem"
+
+Title:
+  player-join-title: "&6&lVítejte na serveru!"
+  player-join-subtitle: "&7Užijte si &cAnarchy &7a &cGrief"

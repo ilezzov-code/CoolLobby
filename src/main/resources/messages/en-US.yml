@@ -6,22 +6,46 @@
 # Вы можете использовать все форматы одновременно в одном сообщении. Плагин это поддерживает
 # You can use all formats simultaneously in one message. The plugin supports this
 
-#The prefix plugin. Use {P} in messages
-prefix: "&6PluginBlank &8|"
+Plugin:
+  plugin-prefix: "&6CoolLobby &8|" #The prefix plugin. Use {P} in messages
+  plugin-reload: "{P} &7The plugin has been successfully &areloaded"
+  plugin-has-error: "{P} &7An error occurred: &c{ERROR}"
+  plugin-has-error-enable: "{P} &7An error occurred while starting the plugin: &c{ERROR}"
+  plugin-has-error-reload: "{P} &7An error occurred while reloading the plugin: &c{ERROR}"
+  plugin-use-latest-version: "{P} &7You are using the &alatest &7version of the plugin"
+  plugin-use-outdated-version: "{P} &7You are using an outdated version: &c{OUTDATED_VERS} \n&7It is recommended to install the latest version of the plugin: &6{LATEST_VERS} \n&7Download: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
 
-plugin_messages:
-  enable: "{P} &7The plugin is &aenabled! \n{P} \n&7Version: &6{VERSION} \n{P} &7Developer: &e{DEVELOPER}"
-  disable: "{P} &7The plugin is &cdisabled!"
-  reload: "{P} &7The plugin has been &areloaded"
-  no_perms: "{P} &cYou don't has permission to use this command O_o"
-  no_console: "{P} &cThis command is only players!"
-  has_error_enable: "{P} &7An error occurred when enabling the plugin: &c{ERROR}"
-  has_error_reload: "{P} &7An error occurred when reloading the plugin: &c{ERROR}"
-  latest_version: "{P} &7You use &alatest &7plugin version"
-  outdated_version: "{P} &7You use outdated plugin version: &c{OUTDATED_VERS} \n&7Developer recommended download latest plugin version: &6{LATEST_VERS} \n&7Download: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
+Messages:
+  command-permission-error: "{P} &cYou do not have permission to execute this command O_o"
+  command-no-console-error: "{P} &cThis command is only available to players!"
+  command-cooldown: "{P} &7Please wait &6{TIME} &7seconds before using this command again"
+  command-disable: "{P} &7This command has been disabled by the server administrator"
+  command-only-lobby-use: "{P} &7This command is only available in &6{WORLD}"
 
-event_messages:
-  player_join: "{P} &7Welcome, &6{NAME}!"
+  command-main-message: "{P} &7Plugin command help: \n\n
+    &e/fw &7— launch a firework \n
+    &e/lt &7— strike with lightning \n
+    &e/spit &7— spit \n
+    &e/fly &7— toggle flight mode \n
+    &e/cool-lobby &7— send this message \n
+    &e/cool-lobby reload &7— reload the plugin \n\n
+  &7Developer: &6{DEVELOPER} \n
+  &7Contact: <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
 
-command_messages:
-  main_command: "{P} &7Help with the plugin commands: \n\n&e/plugin-blank &7— send this message \n&e/plugin-blank reload&7— reload the plugin \n\n&7Developer: &6{DEVELOPER} \n&7Contact: <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
+  command-firework-message: "{P} &7Firework!"
+  command-lighting-message: "{P} &7Lightning!"
+  command-spit-message: "{P} &7Spit!"
+  command-fly-enable-message: "{P} &7Flight mode &aenabled! &7You can now fly"
+  command-fly-disable-message: "{P} &7Flight mode &cdisabled! &7You can now double jump"
+
+  player-join-message: "{P} &7Welcome, &6{NAME}!"
+  player-join-global-message: "{P} &6{NAME}&7 has joined the server"
+
+  player-leave-global-message: "{P} &6{NAME}&7 has left our wonderful server"
+
+  double-jump-jump-message: "{P} &7Wow! What a jump"
+  double-jump-cooldown-message: "{P} &7Please wait &6{TIME} &7seconds before jumping again"
+
+Title:
+  player-join-title: "&6&lWelcome to the server!"
+  player-join-subtitle: "&7Wipe on &cAnarchy &7and &cGrief"

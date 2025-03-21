@@ -1,5 +1,6 @@
-package ru.ilezzov.coollobby.models;
+package ru.ilezzov.coollobby.file;
 
+import lombok.Getter;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
@@ -10,6 +11,7 @@ import java.util.Map;
 
 public class PluginFile {
     private final Yaml YAML = new Yaml();
+    @Getter
     private final String filePath;
     private final String fileName;
 
@@ -27,10 +29,6 @@ public class PluginFile {
 
     public void reload() throws FileNotFoundException {
         file = load(this.filePath);
-    }
-
-    public void reload(final File file) throws FileNotFoundException {
-        this.file = load(file.getPath());
     }
 
     public String getString(final String key) throws NullPointerException {
