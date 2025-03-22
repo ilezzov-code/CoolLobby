@@ -1,6 +1,7 @@
 package ru.ilezzov.coollobby.messages;
 
 import net.kyori.adventure.text.Component;
+import ru.ilezzov.coollobby.utils.LegacySerialize;
 import ru.ilezzov.coollobby.utils.PlaceholderReplacer;
 
 import java.util.HashMap;
@@ -108,14 +109,14 @@ public class PluginMessages {
     private static Component getComponent(final String key) {
         final String message = getMessagesFile().getConfig().getString(key);
 
-        return getLegacySerialize().serialize(message);
+        return LegacySerialize.serialize(message);
     }
 
     private static Component getComponent(final String key, final HashMap<String, String> placeholders) {
         String message = getMessagesFile().getString(key);
         message = replacePlaceholder(message, placeholders);
 
-        return getLegacySerialize().serialize(message);
+        return LegacySerialize.serialize(message);
     }
 
     private static String replacePlaceholder(final String message, final HashMap<String, String> placeholders) {

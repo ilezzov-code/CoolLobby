@@ -2,6 +2,7 @@ package ru.ilezzov.coollobby.messages;
 
 import net.kyori.adventure.text.Component;
 import ru.ilezzov.coollobby.Main;
+import ru.ilezzov.coollobby.utils.LegacySerialize;
 import ru.ilezzov.coollobby.utils.PlaceholderReplacer;
 
 import java.util.HashMap;
@@ -41,11 +42,11 @@ public class ConsoleMessages {
     private static Component getComponent(String message, final HashMap<String, String> placeholders) {
         message = replacePlaceholder(message, placeholders);
 
-        return Main.getLegacySerialize().serialize(message);
+        return LegacySerialize.serialize(message);
     }
 
     private static Component getComponent(final String message) {
-        return Main.getLegacySerialize().serialize(message);
+        return LegacySerialize.serialize(message);
     }
 
     private static String replacePlaceholder(final String message, final HashMap<String, String> placeholders) {

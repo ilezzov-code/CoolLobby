@@ -34,7 +34,7 @@ public class VersionManager {
                 .build();
 
         final HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
-        httpClient.close();
+        //httpClient.close();
 
         return httpResponse.body();
     }

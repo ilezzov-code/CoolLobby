@@ -39,7 +39,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
 
         switch (args[0]) {
             case "reload" -> {
-                if (hasPermission(sender)) {
+                if (hasPermission(sender, Permission.RELOAD)) {
                     Main.reloadFiles();
                     Main.reloadPrefix();
                     Main.setWorldSettings();

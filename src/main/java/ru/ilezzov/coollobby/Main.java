@@ -2,13 +2,12 @@ package ru.ilezzov.coollobby;
 
 import lombok.Getter;
 import net.kyori.adventure.text.Component;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import ru.ilezzov.coollobby.bStats.Metrics;
 import ru.ilezzov.coollobby.commands.*;
 import ru.ilezzov.coollobby.database.DBConnection;
 import ru.ilezzov.coollobby.database.H2Connection;
@@ -19,7 +18,6 @@ import ru.ilezzov.coollobby.manager.*;
 import ru.ilezzov.coollobby.messages.ConsoleMessages;
 import ru.ilezzov.coollobby.file.PluginFile;
 import ru.ilezzov.coollobby.models.DefaultPlaceholder;
-import ru.ilezzov.coollobby.utils.LegacySerialize;
 import ru.ilezzov.coollobby.utils.ListUtils;
 
 import java.io.File;
@@ -29,15 +27,12 @@ import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import static org.bukkit.Bukkit.*;
 import static ru.ilezzov.coollobby.messages.PluginMessages.*;
 
 public final class Main extends JavaPlugin {
-    //Serializer message color
-    @Getter
-    private static final LegacySerialize legacySerialize = new LegacySerialize();
-
     //Plugin logger
     @Getter
     private static final Logger pluginLogger = new PaperLogger();
@@ -91,7 +86,7 @@ public final class Main extends JavaPlugin {
         loadFiles();
 
         final HashMap<String, String> dbArgs = new HashMap<>();
-        dbArgs.put("PATH", getDBFilePath("data", "database.db"));
+        dbArgs.put("PATH", getDBFilePath());
 
         createDBConnection(databaseFile.getString("database.type"), dbArgs);
 
@@ -166,8 +161,8 @@ public final class Main extends JavaPlugin {
         }
     }
 
-    private String getDBFilePath(final String filePath, final String fileName) {
-        return new File(Paths.get(this.getDataPath().toString(), filePath).toString(), fileName).getPath();
+    private String getDBFilePath() {
+        return new File(Paths.get(this.getDataFolder().getPath(), "data").toString(), "database.db").getPath();
     }
 
     //Register your commands. Add a new command in plugin.yml to register her
@@ -179,10 +174,10 @@ public final class Main extends JavaPlugin {
             mainCommand.setTabCompleter(new MainCommand());
         }
 
-        Main.getInstance().getCommand("firework").setExecutor(new FireworkCommand());
-        Main.getInstance().getCommand("lighting").setExecutor(new LightingCommand());
-        Main.getInstance().getCommand("spit").setExecutor(new SpitCommand());
-        Main.getInstance().getCommand("fly").setExecutor(new FlyCommand());
+        Objects.requireNonNull(Main.getInstance().getCommand("firework")).setExecutor(new FireworkCommand());
+        Objects.requireNonNull(Main.getInstance().getCommand("lighting")).setExecutor(new LightingCommand());
+        Objects.requireNonNull(Main.getInstance().getCommand("spit")).setExecutor(new SpitCommand());
+        Objects.requireNonNull(Main.getInstance().getCommand("fly")).setExecutor(new FlyCommand());
     }
 
     //Register your events. Add a new event class to register her
