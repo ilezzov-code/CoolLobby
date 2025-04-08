@@ -1,7 +1,8 @@
 # Database settings
+Database:
+  type: "SQLITE" # Only SQLITE
 
-database:
-  type: "SQLITE" #Only SQLITE
 
 # Don't edit this
+# Не редактируйте это
 config_version: 1.0

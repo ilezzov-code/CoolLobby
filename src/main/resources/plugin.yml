@@ -1,28 +1,36 @@
-name: CoolLobby
-version: '1.0'
+name: ${project.name}
+version: ${project.version}
 main: ru.ilezzov.coollobby.Main
-api-version: '1.21'
-prefix: CoolLobby
-load: POSTWORLD
+api-version: '1.17'
+prefix: ${project.name}
 authors: [ ILeZzoV ]
-description: Make your stay at Lobby more fun
+description: Diversify your time in Lobby
 website: https://t.me/ilezzov
 commands:
   cool-lobby:
     description: The main plugin command
-    aliases: [ cl, coollobby ]
-    usage: /cool-lobby
+    aliases:
+      - cb
+      - coollobby
+    usage: /coollobby
+
   firework:
-    description: Start the fireworks
-    aliases: [ fw ]
-    usage: /firework
+    description: "Send firework"
+    aliases:
+      - fw
+    usage: /fw
+
   lighting:
-    description: Summon lighting
-    aliases: [ lt ]
-    usage: /lighting
+    description: "Summon lighting"
+    aliases:
+      - lt
+    usage: /lt
+
   spit:
-    description: Spit
+    description: "Spit in your opponent"
     usage: /spit
+
   fly:
-    description: Enable flight mode
+    description: "Enable / Disable fly mode"
     usage: /fly
+

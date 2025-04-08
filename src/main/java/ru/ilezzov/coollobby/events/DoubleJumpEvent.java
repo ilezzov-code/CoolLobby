@@ -1,7 +1,8 @@
 package ru.ilezzov.coollobby.events;
 
+import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -9,104 +10,74 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 import ru.ilezzov.coollobby.Main;
 import ru.ilezzov.coollobby.enums.Permission;
-import ru.ilezzov.coollobby.manager.CooldownManager;
+import ru.ilezzov.coollobby.managers.CooldownManager;
 import ru.ilezzov.coollobby.messages.PluginMessages;
-import ru.ilezzov.coollobby.models.DefaultPlaceholder;
+import ru.ilezzov.coollobby.models.PluginPlaceholder;
 import ru.ilezzov.coollobby.utils.PermissionsChecker;
 
 public class DoubleJumpEvent implements Listener {
-    private final CooldownManager cooldownManager = new CooldownManager(Main.getConfigFile().getLong("double_jump.cooldown"));
-    private final DefaultPlaceholder doubleJumpPlaceholders = new DefaultPlaceholder();
+    private final boolean isEnableParticle = Main.getConfigFile().getBoolean("double_jump.double_jump_particle.enable");
+    private final Particle particle = getParticle();
 
-    private final boolean isEnableDoubleJump = Main.getConfigFile().getBoolean("double_jump.enable");
-    private final boolean isEnableDoubleJumpSound = Main.getConfigFile().getBoolean("double_jump.double_jump_sound.enable");
-    private final boolean isEnableDoubleJumpParticle = Main.getConfigFile().getBoolean("double_jump.double_jump_particle.enable");
+    private final boolean isEnableSound = Main.getConfigFile().getBoolean("double_jump.double_jump_sound.enable");
+    private final Sound sound = getSound();
 
-    private final Sound doubleJumpSound = getDoubleJumpSound();
+    private static final int cooldownSeconds = Main.getConfigFile().getInt("double_jump.cooldown");
+    public static final CooldownManager cooldownManager = new CooldownManager(cooldownSeconds);
+
+    private final PluginPlaceholder placeholder = new PluginPlaceholder();
 
     @EventHandler
-    public void onPlayerToggleFly(final PlayerToggleFlightEvent event) {
+    public void onPlayerToggleFlight(final PlayerToggleFlightEvent event) {
         final Player player = event.getPlayer();
-        
-        if (!isEnableDoubleJump) {
-            return;
-        }
-
-        if (player.getGameMode() == GameMode.CREATIVE) {
-            return;
-        }
 
         if (Main.getFlyManager().isAllowFlight(player.getUniqueId())) {
             return;
         }
-
-        final long cooldownTimeFinish = cooldownManager.getCooldownTime(player.getUniqueId()) - System.currentTimeMillis();
-
-        if (cooldownTimeFinish > 0) {
-            doubleJumpPlaceholders.addPlaceholder("{TIME}", String.valueOf(cooldownTimeFinish / 1000));
-            player.sendMessage(PluginMessages.doubleJumpCooldownMessage(doubleJumpPlaceholders.getPlaceholders()));
-            event.setCancelled(true);
+        if (player.getGameMode() == GameMode.CREATIVE) {
             return;
         }
-
         if (!PermissionsChecker.hasPermission(player, Permission.DOUBLE_JUMP)) {
             return;
         }
 
         event.setCancelled(true);
+        Main.getApi().createDoubleJump(player, particle, sound);
+        player.sendMessage(PluginMessages.playerDoubleJumpMessage(placeholder));
+        startCooldownBarTask(player).runTaskTimer(Main.getInstance(), 0, 20);
 
-        createDoubleJump(player);
-        sendDoubleJumpEffect(player);
-        playSound(player);
-
-        player.sendMessage(PluginMessages.doubleJumpJumpMessage(doubleJumpPlaceholders.getPlaceholders()));
-
-        cooldownManager.newCooldown(player.getUniqueId());
-    }
-
-    private void createDoubleJump(final Player player) {
-        player.setFlying(false);
-        player.setAllowFlight(false);
-        player.setVelocity(player.getLocation().getDirection().multiply(1.5).setY(1));
-    }
-
-    private void playSound(final Player player) {
-        if (isEnableDoubleJumpSound) {
-            player.playSound(player, doubleJumpSound, 1, 1);
+        if (!PermissionsChecker.hasPermission(player, Permission.NO_COOLDOWN)) {
+            cooldownManager.newCooldown(player.getUniqueId());
         }
     }
 
-    private void sendDoubleJumpEffect(final Player player) {
-        if (isEnableDoubleJumpParticle) {
-            sendJumpEffectRunnable(player, getDoubleJumpParticle()).runTaskTimer(Main.getInstance(), 0, 1);
-        }
-    }
-
-    private BukkitRunnable sendJumpEffectRunnable(final Player player, final Particle particle) {
+    private BukkitRunnable startCooldownBarTask(final Player player) {
         return new BukkitRunnable() {
             @Override
             public void run() {
-                if (player.isOnGround()) {
-                    cancel();
+                if (cooldownManager.checkCooldown(player.getUniqueId())) {
+                    return;
                 }
-
-                if (player.getLocation().subtract(0, 1, 0).getBlock().getType() == Material.WATER) {
-                    cancel();
-                }
-
-                player.spawnParticle(particle, player.getLocation(), 1, 0, 0, 0, 0);
+                placeholder.addPlaceholder("{TIME}", cooldownManager.getRemainingTime(player.getUniqueId()));
+                player.sendActionBar(PluginMessages.playerDoubleJumpActionBarCooldownMessage(placeholder));
             }
         };
     }
 
-    private Sound getDoubleJumpSound() {
-        return Sound.valueOf(Main.getConfigFile().getString("double_jump.double_jump_sound.sound"));
-    }
-
-    private Particle getDoubleJumpParticle() {
+    private Particle getParticle() {
+        if (!isEnableParticle) {
+            return null;
+        }
         return Particle.valueOf(Main.getConfigFile().getString("double_jump.double_jump_particle.particle"));
     }
-}
 
+    private Sound getSound() {
+        if (!isEnableSound) {
+            return null;
+        }
+        return Sound.valueOf(Main.getConfigFile().getString("double_jump.double_jump_sound.sound"));
+    }
+}

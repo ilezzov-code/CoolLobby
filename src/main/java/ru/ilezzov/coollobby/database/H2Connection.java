@@ -2,12 +2,12 @@ package ru.ilezzov.coollobby.database;
 
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
-import ru.ilezzov.coollobby.models.MyPlayer;
+import ru.ilezzov.coollobby.models.PluginPlayer;
 
 import java.sql.*;
 import java.util.UUID;
 
-public class H2Connection implements DBConnection{
+public class H2Connection implements DBConnection {
     private final String path;
     private final String URL_CONNECTION_TEMPLATE = "jdbc:sqlite:%s";
 
@@ -55,16 +55,21 @@ public class H2Connection implements DBConnection{
     }
 
     @Override
-    public void insertUser(final MyPlayer myPlayer) throws SQLException {
+    public void insertUser(final PluginPlayer myPlayer) throws SQLException {
         try(final PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO players (uuid, gamemode, exp_level, exp_level_exp, food_level) VALUES (?, ?, ?, ?, ?)")) {
             preparedStatement.setObject(1, myPlayer.getUniqueId());
             preparedStatement.setString(2, myPlayer.getGameMode().name());
-            preparedStatement.setInt(3, myPlayer.getExpLevel());
-            preparedStatement.setDouble(4, myPlayer.getExpLevelExp());
+            preparedStatement.setInt(3, myPlayer.getLevel());
+            preparedStatement.setDouble(4, myPlayer.getExp());
             preparedStatement.setInt(5, myPlayer.getFoodLevel());
 
             preparedStatement.execute();
         }
+    }
+
+    @Override
+    public void close() throws SQLException {
+        connection.close();
     }
 
     @Override
@@ -88,14 +93,14 @@ public class H2Connection implements DBConnection{
     }
 
     @Override
-    public MyPlayer getPlayer(final Player player) throws SQLException {
+    public PluginPlayer getPlayer(final Player player) throws SQLException {
         try (final PreparedStatement preparedStatement = this.connection.prepareStatement("SELECT * FROM players WHERE uuid = ?")) {
             preparedStatement.setObject(1, player.getUniqueId());
 
             try (final ResultSet resultSet = preparedStatement.executeQuery()) {
 
                 if (resultSet.next()) {
-                    return new MyPlayer(
+                    return new PluginPlayer(
                             UUID.fromString(resultSet.getString("uuid")),
                             resultSet.getInt("exp_level"),
                             resultSet.getInt("food_level"),

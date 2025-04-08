@@ -8,8 +8,6 @@
 Plugin:
   plugin-prefix: "&6CoolLobby &8|" #Префикс плагина. Используйте {P} в сообщениях
   plugin-reload: "{P} &7Плагин успешно &aперезагружен"
-  plugin-has-error: "{P} &7Возникла какая-то ошибка: &c{ERROR}"
-  plugin-has-error-enable: "{P} &7Возникла ошибка при запуске плагина: &c{ERROR}"
   plugin-has-error-reload: "{P} &7Возникла ошибка при перезагрузке плагина: &c{ERROR}"
   plugin-use-latest-version: "{P} &7Вы используете &aпоследнюю &7версию плагина"
   plugin-use-outdated-version: "{P} &7Вы используете устаревшую версию: &c{OUTDATED_VERS} \n&7Рекомендуем установить последнюю версию плагина: &6{LATEST_VERS} \n&7Скачать: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
@@ -33,21 +31,21 @@ Messages:
 
   command-firework-message: "{P} &7Салют!"
   command-lighting-message: "{P} &7Молния!"
-  command-spit-message: "{P} &7Плевок!"
-  command-fly-enable-message: "{P} &7Режим полета &aвключен! &7Теперь вы можете летать"
-  command-fly-disable-message: "{P} &7Режим полета &cвыключен! &7Теперь вы можете делать двойной прыжок"
+  command-spit-message: "{P} &7Ха-тьфу!"
+  command-fly-enable-message: "{P} &7Режим полета &aвключен"
+  command-fly-disable-message: "{P} &7Режим полета &cвыключен!"
 
   player-join-message: "{P} &7Добро пожаловать, &6{NAME}!"
   player-join-global-message: "{P} &6{NAME}&7, залетел к нам на сервер"
 
   player-leave-global-message: "{P} &6{NAME}&7, покинул наш прекрасный сервер"
 
-  double-jump-jump-message: "{P} &7Вау! Вот это прыжок"
-  double-jump-cooldown-message: "{P} &7Подождите ещё &6{TIME} &7сек. перед новым прыжком"
+  player-double-jump-message: "{P} &7Вау! Вот это прыжок"
+  player-double-jump-action-bar-cooldown: "&7Подождите еще &6{TIME} &7сек. для следующего прыжка"
 
 Title:
   player-join-title: "&6&lДобро пожаловать на сервер!"
   player-join-subtitle: "&7Вайп на &cAnarchy &7и &cGrief"
 
-# Не редактируйте этот файл
+# Не редактируйте это
 config_version: 1.0

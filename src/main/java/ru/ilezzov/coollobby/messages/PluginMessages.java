@@ -1,126 +1,106 @@
 package ru.ilezzov.coollobby.messages;
 
 import net.kyori.adventure.text.Component;
+import ru.ilezzov.coollobby.Main;
+import ru.ilezzov.coollobby.models.PluginPlaceholder;
 import ru.ilezzov.coollobby.utils.LegacySerialize;
 import ru.ilezzov.coollobby.utils.PlaceholderReplacer;
 
-import java.util.HashMap;
-
-import static ru.ilezzov.coollobby.Main.*;
-
 public class PluginMessages {
-
-    public static Component pluginReloadMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Plugin.plugin-reload", placeholders);
+    public static Component pluginOutdatedVersionMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Plugin.plugin-use-outdated-version", placeholder);
     }
 
-    public static Component pluginHasErrorMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Plugin.plugin-has-error", placeholders);
+    public static Component pluginReloadMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Plugin.plugin-reload", placeholder);
     }
 
-    public static Component pluginHasErrorMessageEnable(final HashMap<String, String> placeholders) {
-        return getComponent("Plugin.plugin-has-error-enable", placeholders);
+    public static Component pluginNoPermsMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.command-permission-error", placeholder);
     }
 
-    public static Component pluginHasErrorMessageReload(final HashMap<String, String> placeholders) {
-        return getComponent("Plugin.plugin-has-error-reload", placeholders);
+    public static Component pluginNoConsoleMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.command-no-console-error", placeholder);
     }
 
-    public static Component pluginLatestVersionMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Plugin.plugin-use-latest-version", placeholders);
+    public static Component pluginCommandCooldownMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.command-cooldown", placeholder);
     }
 
-    public static Component pluginOutdatedVersionMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Plugin.plugin-use-outdated-version", placeholders);
+    public static Component commandMainCommandMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.command-main-message", placeholder);
     }
 
-    public static Component pluginNoPermsMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.command-permission-error", placeholders);
+    public static Component commandDisableCommandMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.command-disable", placeholder);
     }
 
-    public static Component pluginNoConsoleMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.command-no-console-error", placeholders);
+    public static Component commandOnlyLobbyUse(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.command-only-lobby-use", placeholder);
     }
 
-    public static Component pluginCooldownMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.command-cooldown", placeholders);
+    public static Component commandFireworkCommandMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.command-firework-message", placeholder);
     }
 
-    public static Component commandMainCommandMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.command-main-message", placeholders);
+    public static Component commandLightingCommandMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.command-lighting-message", placeholder);
     }
 
-    public static Component commandFwCommandMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.command-firework-message", placeholders);
+    public static Component commandSpitCommandMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.command-spit-message", placeholder);
     }
 
-    public static Component commandLtCommandMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.command-lighting-message", placeholders);
+    public static Component commandFlyEnableCommandMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.command-fly-enable-message", placeholder);
     }
 
-    public static Component commandSpitCommandMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.command-spit-message", placeholders);
+    public static Component commandFlyDisableCommandMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.command-fly-disable-message", placeholder);
     }
 
-    public static Component commandFlyEnableCommandMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.command-fly-enable-message", placeholders);
+    public static Component playerJoinMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.player-join-message", placeholder);
     }
 
-    public static Component commandFlyDisableCommandMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.command-fly-disable-message", placeholders);
+    public static Component playerJoinGlobalMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.player-join-global-message", placeholder);
+    }
+    
+    public static Component playerLeaveGlobalMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.player-leave-global-message", placeholder);
     }
 
-    public static Component commandDisableCommandMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.command-disable", placeholders);
+    public static Component playerDoubleJumpMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.player-double-jump-message", placeholder);
     }
 
-    public static Component commandOnlyLobbyCommandMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.command-only-lobby-use", placeholders);
+    public static Component playerDoubleJumpActionBarCooldownMessage(final PluginPlaceholder placeholder) {
+        return getComponent("Messages.player-double-jump-action-bar-cooldown", placeholder);
     }
 
-    public static Component eventPlayerJoinMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.player-join-message", placeholders);
-    }
-
-    public static Component eventPlayerJoinGlobalMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.player-join-global-message", placeholders);
-    }
-
-    public static Component eventPlayerLeaveGlobalMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.player-leave-global-message", placeholders);
-    }
-
-    public static Component doubleJumpJumpMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.double-jump-jump-message", placeholders);
-    }
-
-    public static Component doubleJumpCooldownMessage(final HashMap<String, String> placeholders) {
-        return getComponent("Messages.double-jump-cooldown-message", placeholders);
-    }
-
-    public static Component eventPlayerJoinTitleTitle() {
+    public static Component playerJoinTitleTitle() {
         return getComponent("Title.player-join-title");
     }
 
-    public static Component eventPlayerJoinTitleSubtitle() {
+    public static Component playerJoinTitleSubtitle() {
         return getComponent("Title.player-join-subtitle");
     }
 
     private static Component getComponent(final String key) {
-        final String message = getMessagesFile().getConfig().getString(key);
+        final String message = Main.getMessagesFile().getConfig().getString(key);
 
         return LegacySerialize.serialize(message);
     }
 
-    private static Component getComponent(final String key, final HashMap<String, String> placeholders) {
-        String message = getMessagesFile().getString(key);
-        message = replacePlaceholder(message, placeholders);
+    private static Component getComponent(final String key, final PluginPlaceholder placeholder) {
+        String message = Main.getMessagesFile().getString(key);
+        message = replacePlaceholder(message, placeholder);
 
         return LegacySerialize.serialize(message);
     }
 
-    private static String replacePlaceholder(final String message, final HashMap<String, String> placeholders) {
-        return PlaceholderReplacer.replacePlaceholder(message, placeholders);
+    private static String replacePlaceholder(final String message, final PluginPlaceholder placeholder) {
+        return PlaceholderReplacer.replacePlaceholder(message, placeholder);
     }
-
 }

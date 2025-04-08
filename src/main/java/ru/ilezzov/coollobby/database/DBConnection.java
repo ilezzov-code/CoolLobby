@@ -1,7 +1,7 @@
 package ru.ilezzov.coollobby.database;
 
 import org.bukkit.entity.Player;
-import ru.ilezzov.coollobby.models.MyPlayer;
+import ru.ilezzov.coollobby.models.PluginPlayer;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -12,11 +12,12 @@ public interface DBConnection {
     void checkTables() throws SQLException;
     void updateUser(final Player player) throws SQLException;
     void insertUser(final Player player) throws SQLException;
-    void insertUser(final MyPlayer myPlayer) throws SQLException;
+    void insertUser(final PluginPlayer myPlayer) throws SQLException;
+    void close() throws SQLException;
 
     boolean checkUser(final UUID playerUniqueId) throws SQLException;
 
     Connection getConnection() throws SQLException;
 
-    MyPlayer getPlayer(final Player player) throws SQLException;
+    PluginPlayer getPlayer(final Player player) throws SQLException;
 }

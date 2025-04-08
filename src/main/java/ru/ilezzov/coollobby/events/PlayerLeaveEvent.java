@@ -1,60 +1,54 @@
 package ru.ilezzov.coollobby.events;
 
 import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import ru.ilezzov.coollobby.Main;
+import ru.ilezzov.coollobby.messages.ConsoleMessages;
 import ru.ilezzov.coollobby.messages.PluginMessages;
-import ru.ilezzov.coollobby.models.DefaultPlaceholder;
+import ru.ilezzov.coollobby.models.PluginPlaceholder;
 
 import java.sql.SQLException;
 
-import static ru.ilezzov.coollobby.Main.*;
-
-
 public class PlayerLeaveEvent implements Listener {
-    private final DefaultPlaceholder eventPlaceholders = new DefaultPlaceholder();
+    private final PluginPlaceholder eventPlaceholder = new PluginPlaceholder();
+
+    private final boolean enablePlayerLeaveGlobalMessgae = Main.getConfigFile().getBoolean("player_leave.global_leave_message.enable");
 
     @EventHandler
-    public void onPlayerQuitEvent(final PlayerQuitEvent event) {
+    public void onPlayerLeaveEvent(final PlayerQuitEvent event) {
         final Player player = event.getPlayer();
 
-        eventPlaceholders.addPlaceholder("{NAME}", player.getName());
+        eventPlaceholder.addPlaceholder("{NAME}", player.getName());
 
+        event.setQuitMessage(null);
         sendGlobalLeaveMessage();
         updatePlayerData(player);
-        setAllowFlight(player);
     }
 
     private void sendGlobalLeaveMessage() {
-        if (Main.getConfigFile().getBoolean("player_leave.global_leave_message.enable")) {
-            Bukkit.broadcast(PluginMessages.eventPlayerLeaveGlobalMessage(eventPlaceholders.getPlaceholders()));
+        if (!enablePlayerLeaveGlobalMessgae) {
+            return;
         }
+
+        Bukkit.broadcast(PluginMessages.playerLeaveGlobalMessage(eventPlaceholder));
     }
 
     private void updatePlayerData(final Player player) {
-        final World world = player.getWorld();
-
-        if (Main.getWorldManager().getWorld().getUID() == world.getUID()) {
+        if (Main.getLobbyManager().isLobby(player.getWorld())) {
             return;
         }
 
         try {
-            if (getDbConnect().checkUser(player.getUniqueId())) {
-                getDbConnect().updateUser(player);
+            if (!Main.getDbConnect().checkUser(player.getUniqueId())) {
+                Main.getDbConnect().insertUser(player);
+            } else {
+                Main.getDbConnect().updateUser(player);
             }
         } catch (SQLException e) {
-            eventPlaceholders.addPlaceholder("{ERROR}", e.getMessage());
-            Main.getPluginLogger().info(PluginMessages.pluginHasErrorMessage(eventPlaceholders.getPlaceholders()));
+            Main.getPluginLogger().info(ConsoleMessages.errorOccurred("Couldn't send a request to the database: " + e.getMessage()));
         }
     }
-
-    private void setAllowFlight(final Player player) {
-        player.setAllowFlight(Main.getFlyManager().isAllowFlight(player.getUniqueId()));
-    }
-
-
 }

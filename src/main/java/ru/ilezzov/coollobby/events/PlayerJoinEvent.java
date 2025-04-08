@@ -7,22 +7,35 @@ import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 import ru.ilezzov.coollobby.Main;
+import ru.ilezzov.coollobby.messages.ConsoleMessages;
 import ru.ilezzov.coollobby.messages.PluginMessages;
-import ru.ilezzov.coollobby.models.DefaultPlaceholder;
+import ru.ilezzov.coollobby.models.PluginPlaceholder;
 
 import java.sql.SQLException;
 import java.time.Duration;
 
-import static ru.ilezzov.coollobby.Main.*;
-
 public class PlayerJoinEvent implements Listener {
-    private final DefaultPlaceholder eventPlaceholder = new DefaultPlaceholder();
+    private final PluginPlaceholder eventPlaceholder = new PluginPlaceholder();
 
-    @EventHandler(priority = EventPriority.LOWEST)
+    private final boolean enableDefaultGamemode = Main.getConfigFile().getBoolean("lobby_settings.default_gamemode.enable");
+    private final GameMode defaultGamemode = getDefaultGamemode();
+
+    private final boolean enableDefaultLevel = Main.getConfigFile().getBoolean("lobby_settings.default_level.enable");
+    private final int expLevel = getDefaultLevel();
+
+    private final boolean enablePlayerJoinMessage = Main.getConfigFile().getBoolean("player_join.join_message.enable");
+    private final boolean enablePlayerJoinGlobalMessage = Main.getConfigFile().getBoolean("player_join.global_join_message.enable");
+
+    private final boolean enablePlayerJoinTitle = Main.getConfigFile().getBoolean("player_join.join_title.enable");
+    private final int[] titleTimes = getTitleTimes();
+
+    private final boolean enablePlayerJoinSound = Main.getConfigFile().getBoolean("player_join.join_sound.enable");
+    private final Sound joinSound = getJoinSound();
+
+    @EventHandler
     public void onPlayerLoginEvent(final PlayerLoginEvent event) {
         final Player player = event.getPlayer();
         insertPlayer(player);
@@ -32,108 +45,105 @@ public class PlayerJoinEvent implements Listener {
     @EventHandler
     public void onPlayerJoinEvent(final org.bukkit.event.player.PlayerJoinEvent event) {
         final Player player = event.getPlayer();
-        
+        final World world = event.getPlayer().getWorld();;
+
+        if (Main.getLobbyManager().isLobby(world)) {
+            Main.getApi().setLevel(player, expLevel);
+            Main.getApi().setGameMode(player, defaultGamemode);
+            Main.getApi().setFoodLevel(player, 20);
+        }
+
         eventPlaceholder.addPlaceholder("{NAME}", player.getName());
 
-        setLobbyLevel(player);
-        setLobbyGamemode(player);
-        setFoodLevel(player);
         sendJoinMessage(player);
         sendJoinTitle(player);
+        sendJoinSound(player);
 
+        event.setJoinMessage(null);
         sendGlobalJoinMessage();
-        sendJoinSound();
     }
 
     private void insertPlayer(final Player player) {
         try {
-            if (!getDbConnect().checkUser(player.getUniqueId())) {
-                getDbConnect().insertUser(player);
+            if (!Main.getDbConnect().checkUser(player.getUniqueId())) {
+                Main.getDbConnect().insertUser(player);
             }
         } catch (SQLException e) {
-            eventPlaceholder.addPlaceholder("{ERROR}", e.getMessage());
-
-            Main.getPluginLogger().info(PluginMessages.pluginHasErrorMessage(eventPlaceholder.getPlaceholders()));
-        }
-    }
-
-    private void sendJoinMessage(final Player player) {
-        if (Main.getConfigFile().getBoolean("player_join.join_message.enable")) {
-            player.sendMessage(PluginMessages.eventPlayerJoinMessage(eventPlaceholder.getPlaceholders()));
+            Main.getPluginLogger().info(ConsoleMessages.errorOccurred("Couldn't send a request to the database: " + e.getMessage()));
         }
     }
 
     private void sendGlobalJoinMessage() {
-        if (Main.getConfigFile().getBoolean("player_join.global_join_message.enable")) {
-            Bukkit.broadcast(PluginMessages.eventPlayerJoinGlobalMessage(eventPlaceholder.getPlaceholders()));
+        if (!enablePlayerJoinGlobalMessage) {
+            return;
         }
+
+        Bukkit.broadcast(PluginMessages.playerJoinGlobalMessage(eventPlaceholder));
+    }
+
+    private void sendJoinSound(final Player player) {
+        if (!enablePlayerJoinSound) {
+            return;
+        }
+        player.playSound(player, joinSound, 1, 1);
     }
 
     private void sendJoinTitle(final Player player) {
-        if (Main.getConfigFile().getBoolean("player_join.join_title.enable")) {
-            player.showTitle(Title.title(
-                    PluginMessages.eventPlayerJoinTitleTitle(),
-                    PluginMessages.eventPlayerJoinTitleSubtitle(),
-                    Title.Times.times(
-                            Duration.ofSeconds(Main.getConfigFile().getLong("player_join.join_title.fade_in")),
-                            Duration.ofSeconds(Main.getConfigFile().getLong("player_join.join_title.stay")),
-                            Duration.ofSeconds(Main.getConfigFile().getLong("player_join.join_title.fade_out"))
-                    )));
-        }
-    }
-
-    private void sendJoinSound() {
-        if (Main.getConfigFile().getBoolean("player_join.join_sound.enable")) {
-            final Sound sound = Sound.valueOf(Main.getConfigFile().getString("player_join.join_sound.sound"));
-
-            Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
-                playSoundGlobally(sound);
-            });
-        }
-    }
-
-    private void playSoundGlobally(final Sound sound) {
-        for (final Player player : Bukkit.getOnlinePlayers()) {
-            player.playSound(player.getLocation(), sound, 1, 1);
-        }
-    }
-
-    private void setLobbyGamemode(final Player player) {
-        if (!Main.getConfigFile().getBoolean("lobby_settings.default_gamemode.enable")) {
+        if (!enablePlayerJoinTitle) {
             return;
         }
-
-        final World world = player.getWorld();
-
-        if (Main.getWorldManager().getWorld().getUID() == world.getUID()) {
-            final String gamemodeType = Main.getConfigFile().getString("lobby_settings.default_gamemode.type");
-
-            switch (gamemodeType.toLowerCase()) {
-                case "creative" -> player.setGameMode(GameMode.CREATIVE);
-                case "spectator" -> player.setGameMode(GameMode.SPECTATOR);
-                case "adventure" -> player.setGameMode(GameMode.ADVENTURE);
-                default -> player.setGameMode(GameMode.SURVIVAL);
-            }
-        }
+        player.showTitle(Title.title(
+                PluginMessages.playerJoinTitleTitle(),
+                PluginMessages.playerJoinTitleSubtitle(),
+                Title.Times.times(
+                        Duration.ofSeconds(titleTimes[0]),
+                        Duration.ofSeconds(titleTimes[1]),
+                        Duration.ofSeconds(titleTimes[2])
+                )
+        ));
     }
 
-    private void setLobbyLevel(final Player player) {
-        if (!Main.getConfigFile().getBoolean("lobby_settings.default_level.enable")) {
+    private void sendJoinMessage(final Player player) {
+        if (!enablePlayerJoinMessage) {
             return;
         }
+        player.sendMessage(PluginMessages.playerJoinMessage(eventPlaceholder));
+    }
 
-        final String worldName = player.getWorld().getName();
+    private Sound getJoinSound() {
+        return Sound.valueOf(Main.getConfigFile().getString("player_join.join_sound.sound"));
+    }
 
-        if (Main.getWorldManager().isEquals(worldName)) {
-            final int levelValue = Main.getConfigFile().getInt("lobby_settings.default_level.level");
+    private int[] getTitleTimes() {
+        int[] times = new int[3];
 
-            player.setLevel(levelValue);
-            player.setExp(0);
+        times[0] = Main.getConfigFile().getInt("player_join.join_title.fade_in");
+        times[1] = Main.getConfigFile().getInt("player_join.join_title.stay");
+        times[2] = Main.getConfigFile().getInt("player_join.join_title.fade_out");
+
+        return times;
+    }
+
+    private GameMode getDefaultGamemode() {
+        if (!enableDefaultGamemode) {
+            return null;
         }
+
+        final String gamemodeType = Main.getConfigFile().getString("lobby_settings.default_gamemode.type");
+
+        return switch (gamemodeType.toLowerCase()) {
+            case "survival" -> GameMode.SURVIVAL;
+            case "creative" -> GameMode.CREATIVE;
+            case "adventure" -> GameMode.ADVENTURE;
+            case "spectator" -> GameMode.SPECTATOR;
+            default -> Bukkit.getDefaultGameMode();
+        };
     }
 
-    private void setFoodLevel(final Player player) {
-        player.setFoodLevel(20);
+    private int getDefaultLevel() {
+        if (enableDefaultLevel) {
+            return Main.getConfigFile().getInt("lobby_settings.default_level.level");
+        }
+        return -1;
     }
-
 }

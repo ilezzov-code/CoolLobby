@@ -1,24 +1,32 @@
 package ru.ilezzov.coollobby.logging;
 
 import net.kyori.adventure.text.Component;
-import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
+import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
+import ru.ilezzov.coollobby.Main;
+
+import java.util.List;
 
 public class PaperLogger implements Logger {
-    private final CommandSender commandSender;
+    private final ComponentLogger logger;
 
-    public PaperLogger() {
-        this.commandSender = Bukkit.getConsoleSender();
-    }
-
-    @Override
-    public void info(final Component component) {
-        commandSender.sendMessage(component);
+    public PaperLogger(final Main plugin) {
+        logger = plugin.getComponentLogger();
     }
 
     @Override
     public void info(final String message) {
-        commandSender.sendMessage(message);
+        logger.info(Component.text(message));
     }
 
+    @Override
+    public void info(final Component component) {
+        logger.info(component);
+    }
+
+    @Override
+    public void info(final List<Component> components) {
+        for (final Component component : components) {
+            logger.info(component);
+        }
+    }
 }
