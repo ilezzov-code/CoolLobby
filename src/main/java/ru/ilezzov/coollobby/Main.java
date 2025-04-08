@@ -150,7 +150,7 @@ public final class Main extends JavaPlugin {
     }
 
     public static void registerCommands() {
-        final PluginCommand mainCommand = Main.getInstance().getCommand("cool-lobby");
+        final PluginCommand mainCommand = Main.getInstance().getCommand("coollobby");
 
         if(mainCommand != null) {
             mainCommand.setExecutor(new MainCommand());

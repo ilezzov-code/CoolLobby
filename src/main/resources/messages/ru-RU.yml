@@ -24,8 +24,8 @@ Messages:
     &e/lt &7— ударить молнией \n
     &e/spit &7— плюнуть \n
     &e/fly &7— включить/выключить режим полета \n
-    &e/cool-lobby &7— отправить это сообщение \n
-    &e/cool-lobby reload&7— перезагрузить плагин \n\n
+    &e/coollobby &7— отправить это сообщение \n
+    &e/coollobby reload&7— перезагрузить плагин \n\n
   &7Разработчик: &6{DEVELOPER} \n
   &7Связаться: <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
 

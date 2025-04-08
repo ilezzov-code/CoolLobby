@@ -12,7 +12,7 @@
     <a><img src="https://i.imgur.com/Wi0gG3J.png" width="40"></a>
 </div>
 
-### <img src="https://raw.githubusercontent.com/ilezzov-code/CoolLobby/refs/heads/main/img/flags/en.svg" width="15"> [Select English Version](readmes/README_EN.md)
+### <img src="https://raw.githubusercontent.com/ilezzov-code/CoolLobby/refs/heads/main/img/flags/en.svg" width="15"> [Select English Version](https://github.com/ilezzov-code/CoolLobby)
 
 ## Описание:
 
@@ -47,39 +47,39 @@ CoolLobby — плагин, который добавит множество п�
 ## Команды
 ### /firework [/fw]:
 * Запускает фейерверк
-* Право: cool-lobby.fw
+* Право: coollobby.fw
 
 ### /lighting [/lt]
 * Призывает молнию
-* Право: cool-lobby.lt
+* Право: coollobby.lt
 
 ### /spit
 * Плюет в игрока (Визуальный эффект плевка Ламы)
-* Право: cool-lobby.spit
+* Право: coollobby.spit
 
 ### /fly
 * Включает / Выключает полет
 * Синхронизирует полет, если команду можно использовать не только в Lobby
-* Право: cool-lobby.fly
+* Право: coollobby.fly
 
 ## Двойной прыжок
 * Прыгните выше при нажатии двойного пробела
 * Спавнит частицы во время прыжка
 * Проигрывает звук во время прыжка
-* Право: cool-lobby.double_jump
+* Право: coollobby.double_jump
 
 ## Все права плагина
 
 | Право                  | Описание                                   |
 |------------------------|--------------------------------------------|
-| cool-lobby.*           | Дает доступ ко всем командам               |
-| cool-lobby.reload      | Дает доступ к перезагрузке плагина         |
-| cool-lobby.no_cooldown | Отключает задержку на использование команд |
-| cool-lobby.fw          | Доступ к команде /firework                 |
-| cool-lobby.lt          | Доступ к команде /lighting                 |
-| cool-lobby.spit        | Доступ к команде /spit                     |
-| cool-lobby.fly         | Доступ к команде /fly                      |
-| cool-lobby.double_jump | Доступ к двойному прыжку                   |
+| coollobby.*           | Дает доступ ко всем командам               |
+| coollobby.reload      | Дает доступ к перезагрузке плагина         |
+| coollobby.no_cooldown | Отключает задержку на использование команд |
+| coollobby.fw          | Доступ к команде /firework                 |
+| coollobby.lt          | Доступ к команде /lighting                 |
+| coollobby.spit        | Доступ к команде /spit                     |
+| coollobby.fly         | Доступ к команде /fly                      |
+| coollobby.double_jump | Доступ к двойному прыжку                   |
 
 ## Поддерживаемые языки:
 * ru-ru → Русский (Россия)
@@ -101,150 +101,201 @@ CoolLobby — плагин, который добавит множество п�
 * zh-tw → Традиционный китайский (Тайвань)
 
 ## Файл config.yml
-```yml
-language: "ru-RU"
+<details>
+  <summary>Config.yml файл</summary>
+  
+  ```yml
+  # ░█████╗░░█████╗░░█████╗░██╗░░░░░██╗░░░░░░█████╗░██████╗░██████╗░██╗░░░██╗
+  # ██╔══██╗██╔══██╗██╔══██╗██║░░░░░██║░░░░░██╔══██╗██╔══██╗██╔══██╗╚██╗░██╔╝
+  # ██║░░╚═╝██║░░██║██║░░██║██║░░░░░██║░░░░░██║░░██║██████╦╝██████╦╝░╚████╔╝░
+  # ██║░░██╗██║░░██║██║░░██║██║░░░░░██║░░░░░██║░░██║██╔══██╗██╔══██╗░░╚██╔╝░░
+  # ╚█████╔╝╚█████╔╝╚█████╔╝███████╗███████╗╚█████╔╝██████╦╝██████╦╝░░░██║░░░
+  # ░╚════╝░░╚════╝░░╚════╝░╚══════╝╚══════╝░╚════╝░╚═════╝░╚═════╝░░░░╚═╝░░░
 
-# Check the plugin for updates
-# Проверять плагин на наличие обновлений
-check_updates: true
+  # Developer / Разработчик: ILeZzoV
 
-lobby_settings:
-  # The name of the lobby world
-  # Имя lobby мира
-  world: "world"
+  # Socials / Ссылки:
+  # • Contact with me / Связаться: https://t.me/ilezovofficial
+  # • Telegram Channel / Телеграм канал: https://t.me/ilezzov
+  # • GitHub: https://github.com/ilezzov-code
 
-  # Disable damage
-  # Отключить получение урона
-  disable_damage: true
+  # Plugin Pages / Страницы плагинов:
+  # • Modrinth:
+  # • Spigot:
+  # • CurseForge:
+  # • Hangar:
 
-  # Disable hunger
-  # Отключить голод
-  disable_hunger: true
+  # By me coffee / Поддержать разработчика:
+  # • DA: https://www.donationalerts.com/r/ilezzov_dev
+  # • YooMoney: https://yoomoney.ru/to/4100118180919675
+  # • Telegram Gift: https://t.me/ilezovofficial
+  # • TON: UQCInXoHOJAlMpZ-8GIHqv1k0dg2E4pglKAIxOf3ia5xHmKV
+  # • BTC: 1KCM1QN9TNYRevvQD63UF81oBRSK67vCon
+  # • Card: 5536914188326494
 
-  # Disable daylight cycle
-  # Отключить смены времени суток
-  disable_daylight_cycle: true
+  # Supporting messages languages / Доступные языки сообщений:
+  # • Русский (ru-RU)
+  # • English (en-US)
+  language: "ru-RU"
 
-  # Disable mob spawning
-  # Отключить спавн мобов
-  disable_mob_spawning: true
+  # Check the plugin for updates
+  # Проверять плагин на наличие обновлений
+  check_updates: true
 
-  # Disable fire tick
-  # Отключить распространение огня
-  disable_fire_tick: true
+  lobby_settings:
+    # The names of the lobby worlds
+    # Имя lobby мира
+    worlds:
+      - world
+      - lobby-1
+      - lobby-2
 
-  # Disable weather cycle
-  # Отключить смену погоды
-  disable_weather_cycle: true
+    # Disable damage
+    # Отключить получение урона
+    disable_damage: true
 
-  # Default time value
-  # Стандартное время суток
-  default_time:
+    # Disable hunger
+    # Отключить голод
+    disable_hunger: true
+
+    # Disable daylight cycle
+    # Отключить смены времени суток
+    disable_daylight_cycle: true
+
+    # Disable mob spawning
+    # Отключить спавн мобов
+    disable_mob_spawning: true
+
+    # Disable fire tick
+    # Отключить распространение огня
+    disable_fire_tick: true
+
+    # Disable weather cycle
+    # Отключить смену погоды
+    disable_weather_cycle: true
+
+    # Default time value
+    # Стандартное время суток
+    default_time:
+      enable: true
+      value: 1000
+
+    # Default weather
+    # Стандартная погода
+    default_weather:
+      enable: true
+      type: CLEAR # CLEAR, RAIN, THUNDER
+
+    # Default gamemode
+    # Стандартный игровой режим
+    default_gamemode:
+      enable: true
+      type: ADVENTURE
+
+    # Player XP Level
+    # Уровень игрока
+    default_level:
+      enable: true
+      level: 2025
+
+  # /firework command. Permission: coollobby.fw
+  # /firework команда. Права: coollobby.fw
+  fw_command:
+    # Enable the command / Включить команду
     enable: true
-    value: 1000
+    # Use command only lobby world
+    only_lobby: true
+    # Cooldown command in seconds / Задержка на использование в секундах
+    cooldown: 10
 
-  # Default weather
-  # Стандартная погода
-  default_weather:
+  # /lighting command. Permission: coollobby.lt
+  # /lighting команда. Права: coollobby.lt
+  lt_command:
+    # Enable the command / Включить команду
     enable: true
-    type: CLEAR # CLEAR, RAIN, THUNDER
+    # Use command only lobby world
+    only_lobby: true
+    # Cooldown command in seconds / Задержка на использование в секундах
+    cooldown: 10
 
-  # Default gamemode
-  # Стандартный игровой режим
-  default_gamemode:
+  # /spit command. Permission: coollobby.spit
+  # /spit команда. Права: coollobby.spit
+  spit_command:
+    # Enable the command / Включить команду
     enable: true
-    type: ADVENTURE
+    # Use command only lobby world
+    only_lobby: true
+    # Cooldown command in seconds / Задержка на использование в секундах
+    cooldown: 10
 
-  # Player XP Level
-  # Уровень игрока
-  default_level:
+  # /fly command. Permission: coollobby.fly
+  # /fly команда. Права: coollobby.fly
+  fly_command:
+    # Enable the command / Включить команду
     enable: true
-    level: 2025
+    # Use command only lobby world
+    only_lobby: true
+    # Cooldown command in seconds / Задержка на использование в секундах
+    cooldown: 10
+  # Join actions
+  # Действия при входе игрока
+  player_join:
+    # Enable join message / Включить сообщение при входе
+    join_message:
+      enable: true
+    # Enable global join message / Включить глобальное сообщение при входе
+    global_join_message:
+      enable: true
+    # Join Title / Сообщение на экран при входе
+    join_title:
+      enable: true
+      fade_in: 1 # Time when the title appeared in seconds / Время появления текста в секундах
+      fade_out: 1 # Time when the title disappeared in seconds / Время исчезновения текста в секундах
+      stay: 5 # Stay time in milliseconds / Время пребывания в миллисекундах
+    # Join sound / Звук при входе
+    join_sound:
+      enable: true
+      sound: ENTITY_EXPERIENCE_ORB_PICKUP
 
-# /firework command. Permission: cool-lobby.fw
-# /firework команда. Права: cool-lobby.fw
-fw_command:
-  # Enable the command / Включить команду
-  enable: true
-  # Use command only lobby world
-  only_lobby: true
-  # Cooldown command in seconds / Задержка на использование в секундах
-  cooldown: 10
+  # Leave actions
+  # Действия при выходе игрока
+  player_leave:
+    # Enable global leave message / Включить глобальное сообщение о выходе игрока
+    global_leave_message:
+      enable: true
 
-# /lighting command. Permission: cool-lobby.lt
-# /lighting команда. Права: cool-lobby.lt
-lt_command:
-  # Enable the command / Включить команду
-  enable: true
-  # Use command only lobby world
-  only_lobby: true
-  # Cooldown command in seconds / Задержка на использование в секундах
-  cooldown: 10
-
-# /spit command. Permission: cool-lobby.spit
-# /spit команда. Права: cool-lobby.spit
-spit_command:
-  # Enable the command / Включить команду
-  enable: true
-  # Use command only lobby world
-  only_lobby: true
-  # Cooldown command in seconds / Задержка на использование в секундах
-  cooldown: 10
-
-# /fly command. Permission: cool-lobby.fly
-# /fly команда. Права: cool-lobby.fly
-fly_command:
-  # Enable the command / Включить команду
-  enable: true
-  # Use command only lobby world
-  only_lobby: true
-  # Cooldown command in seconds / Задержка на использование в секундах
-  cooldown: 10
-
-# Double Jump
-# Двойной прыжок
-double_jump:
-  enable: true
-  cooldown: 10
-  # Use double jump only lobby world
-  only_lobby: true
-  double_jump_sound:
+  # Double Jump
+  # Двойной прыжок
+  double_jump:
     enable: true
-    sound: ENTITY_EXPERIENCE_ORB_PICKUP
-  double_jump_particle:
-    enable: true
-    particle: FLAME
+    cooldown: 10
+    # Use double jump only lobby world
+    only_lobby: true
+    double_jump_sound:
+      enable: true
+      sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    double_jump_particle:
+      enable: true
+      particle: FLAME
 
-# Join actions
-# Действия при входе игрока
-player_join:
-  join_message:
-    enable: true
-  global_join_message:
-    enable: true
-  join_title:
-    enable: true
-    fade_in: 1 # Time when the title appeared in seconds / Время появления текста в секундах
-    fade_out: 1 # Time when the title disappeared in seconds / Время исчезновения текста в секундах
-    stay: 5 # Stay time in milliseconds / Время пребывания в миллисекундах
-  join_sound:
-    enable: true
-    sound: ENTITY_EXPERIENCE_ORB_PICKUP
-
-# Leave actions
-# Действия при выходе игрока
-player_leave:
-  global_leave_message:
-    enable: true
-    message: true
-
-# Don't edit this
-# Не редактируйте это
-config_version: 1.0
-```
+  # Don't edit this
+  # Не редактируйте это
+  config_version: 1.0
+  ```
+</details>
 
 ## Что делать если я не хочу выделять отдельный сервер под Lobby
 Плагин запоминает уровень игрока, игровой режим, голод для того, чтобы при выходе из лобби, например в игровой мир, игроку был установлен его уровень опыта, его прежний игровой режим и уровень голода. Таким образом плагин подойдет тем, кто не хочет выделять дополнительный сервер под Lobby
+
+### Телепортация из обычного мира в Лобби:
+Плагин сохраняет текущий уровень игрока, игровой режим и уровень голода и устанавливает значения уровня и игрового режима из конфигурации
+
+<img src="../img/gifs/FromWorldToLobby.gif">
+
+### Teleport from Lobby world to World:
+Плагин устанавливает сохраненные значение игроку
+
+<img src="../img/gifs/FromLobbyToWorld.gif">
 
 ## Скриншоты
 `/firework`
@@ -278,11 +329,12 @@ config_version: 1.0
 * Телеграм канал: https://t.me/ilezzov
 * GitHub: https://github.com/ilezzov-code
 
-## Поддержите разработку:
+## By me coffee / Поддержать разработчика:
 * DA: https://www.donationalerts.com/r/ilezzov_dev
-* YooMoney: https://yoomoney.ru/fundraise/193CD8F13OH.250319
+* YooMoney: https://yoomoney.ru/to/4100118180919675
 * Telegram Gift: https://t.me/ilezovofficial
-* TON: UQCsMXvc2og_Sn91TJ8NsHTU9qyvx6qJPZ4TjEJTPdUY0Fes
+* TON: UQCInXoHOJAlMpZ-8GIHqv1k0dg2E4pglKAIxOf3ia5xHmKV
+* BTC: 1KCM1QN9TNYRevvQD63UF81oBRSK67vCon
 * Card: 5536914188326494
 
 ## Возникла ошибка или вопрос? Создайте новую тему — https://github.com/ilezzov-code/CoolLobby/issues/new

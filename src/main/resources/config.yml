@@ -13,14 +13,15 @@
 # • GitHub: https://github.com/ilezzov-code
 
 # Plugin Pages / Страницы плагинов:
-# • Modrinth:
-# • Spigot:
-# • CurseForge:
-# • Hangar:
+# • GitHub: https://github.com/ilezzov-code/CoolLobby
+# • Modrinth: soon
+# • Spigot: soob
+# • CurseForge: soon
+# • Hangar: soon
 
 # By me coffee / Поддержать разработчика:
 # • DA: https://www.donationalerts.com/r/ilezzov_dev
-# • YooMoney: https://yoomoney.ru/fundraise/193CD8F13OH.250319
+# • YooMoney: https://yoomoney.ru/to/4100118180919675
 # • Telegram Gift: https://t.me/ilezovofficial
 # • TON: UQCInXoHOJAlMpZ-8GIHqv1k0dg2E4pglKAIxOf3ia5xHmKV
 # • BTC: 1KCM1QN9TNYRevvQD63UF81oBRSK67vCon
@@ -28,7 +29,7 @@
 
 # Supporting messages languages / Доступные языки сообщений:
 # • Русский (ru-RU)
-# •  English (en-US)
+# • English (en-US)
 language: "ru-RU"
 
 # Check the plugin for updates
@@ -101,8 +102,8 @@ fw_command:
   # Cooldown command in seconds / Задержка на использование в секундах
   cooldown: 10
 
-# /lighting command. Permission: cool-lobby.lt
-# /lighting команда. Права: cool-lobby.lt
+# /lighting command. Permission: coollobby.lt
+# /lighting команда. Права: coollobby.lt
 lt_command:
   # Enable the command / Включить команду
   enable: true
@@ -111,8 +112,8 @@ lt_command:
   # Cooldown command in seconds / Задержка на использование в секундах
   cooldown: 10
 
-# /spit command. Permission: cool-lobby.spit
-# /spit команда. Права: cool-lobby.spit
+# /spit command. Permission: coollobby.spit
+# /spit команда. Права: coollobby.spit
 spit_command:
   # Enable the command / Включить команду
   enable: true
@@ -133,15 +134,19 @@ fly_command:
 # Join actions
 # Действия при входе игрока
 player_join:
+  # Enable join message / Включить сообщение при входе
   join_message:
     enable: true
+  # Enable global join message / Включить глобальное сообщение при входе
   global_join_message:
     enable: true
+  # Join Title / Сообщение на экран при входе
   join_title:
     enable: true
     fade_in: 1 # Time when the title appeared in seconds / Время появления текста в секундах
     fade_out: 1 # Time when the title disappeared in seconds / Время исчезновения текста в секундах
     stay: 5 # Stay time in milliseconds / Время пребывания в миллисекундах
+  # Join sound / Звук при входе
   join_sound:
     enable: true
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
@@ -149,6 +154,7 @@ player_join:
 # Leave actions
 # Действия при выходе игрока
 player_leave:
+  # Enable global leave message / Включить глобальное сообщение о выходе игрока
   global_leave_message:
     enable: true
 

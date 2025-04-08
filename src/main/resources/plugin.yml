@@ -7,11 +7,10 @@ authors: [ ILeZzoV ]
 description: Diversify your time in Lobby
 website: https://t.me/ilezzov
 commands:
-  cool-lobby:
+  coollobby:
     description: The main plugin command
     aliases:
       - cb
-      - coollobby
     usage: /coollobby
 
   firework:
