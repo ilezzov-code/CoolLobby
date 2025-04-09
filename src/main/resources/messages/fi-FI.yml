@@ -1,0 +1,51 @@
+# Plugin tukee kaikkia viestien muotoilutyyppejä.
+# LEGACY — Värit & / § avulla ja HEX muodossa &#rrggbb / §#rrggbb tai &x&r&r&g&g&b&b / §x§r§r§g§g§b§b
+# LEGACY_ADVANCED — Värit ja HEX muodossa &##rrggbb / §##rrggbb
+# MINI_MESSAGE — Värit <väri> muodossa. Lisätietoa — https://docs.advntr.dev/minimessage/index.html
+# Sekä kaikki muodot, jotka löytyvät osoitteesta https://www.birdflop.com/resources/rgb/
+# Voit käyttää kaikkia muotoiluja samassa viestissä. Plugin tukee tätä.
+
+Plugin:
+  plugin-prefix: "&6CoolLobby &8|" #Pluginin etuliite. Käytä {P} viesteissä
+  plugin-reload: "{P} &7Plugin ladattiin &aonnistuneesti &7uudelleen"
+  plugin-has-error-reload: "{P} &7Pluginin uudelleenlatauksessa tapahtui virhe: &c{ERROR}"
+  plugin-use-latest-version: "{P} &7Käytät &auusinta &7versiota pluginista"
+  plugin-use-outdated-version: "{P} &7Käytät vanhentunutta versiota: &c{OUTDATED_VERS} \n&7Suosittelemme uusimman version asentamista: &6{LATEST_VERS} \n&7Lataa: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
+
+Messages:
+  command-permission-error: "{P} &cSinulla ei ole oikeuksia käyttää tätä komentoa O_o"
+  command-no-console-error: "{P} &cTämä komento on käytettävissä vain pelaajille!"
+  command-cooldown: "{P} &7Odota vielä &6{TIME} &7sekuntia ennen kuin käytät tätä komentoa uudelleen"
+  command-disable: "{P} &7Tämä komento on poistettu käytöstä palvelimen ylläpitäjän toimesta"
+  command-only-lobby-use: "{P} &7Tämä komento toimii vain maailmassa &6{WORLD}"
+
+  command-main-message: "{P} &7Pluginin komentojen ohje: \n\n
+    &e/fw &7— laukaise ilotulitus \n
+    &e/lt &7— iske salamalla \n
+    &e/spit &7— sylje \n
+    &e/fly &7— ota lentotila käyttöön/pois käytöstä \n
+    &e/coollobby &7— näytä tämä viesti \n
+    &e/coollobby reload&7— lataa plugin uudelleen \n\n
+  &7Kehittäjä: &6{DEVELOPER} \n
+  &7Yhteystiedot: <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
+
+  command-firework-message: "{P} &7Pam! Ilotulitus!"
+  command-lighting-message: "{P} &7Salama iski!"
+  command-spit-message: "{P} &7Yäk!"
+  command-fly-enable-message: "{P} &7Lentotila &akäytössä"
+  command-fly-disable-message: "{P} &7Lentotila &cei käytössä"
+
+  player-join-message: "{P} &7Tervetuloa, &6{NAME}!"
+  player-join-global-message: "{P} &6{NAME}&7 liittyi palvelimelle"
+
+  player-leave-global-message: "{P} &6{NAME}&7 poistui hienolta palvelimeltamme"
+
+  player-double-jump-message: "{P} &7Vau! Mikä loikka!"
+  player-double-jump-action-bar-cooldown: "&7Odota &6{TIME} &7sekuntia seuraavaa hyppyä varten"
+
+Title:
+  player-join-title: "&6&lTervetuloa palvelimelle!"
+  player-join-subtitle: "&7Wipe maailmoissa &cAnarchy &7ja &cGrief"
+
+# Älä muokkaa tätä
+config_version: 1.0

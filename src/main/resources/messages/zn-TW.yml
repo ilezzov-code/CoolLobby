@@ -1,0 +1,51 @@
+# 插件支援所有類型的訊息格式化。
+# LEGACY — 透過 & / § 設定顏色，並且 HEX 透過 &#rrggbb / §#rrggbb 或 &x&r&r&g&g&b&b / §x§r§r§g§g§b§b
+# LEGACY_ADVANCED — 透過 &##rrggbb / §##rrggbb 設定顏色和 HEX
+# MINI_MESSAGE — 透過 <顏色> 設定顏色 詳情 — https://docs.advntr.dev/minimessage/index.html
+# 以及所有在 https://www.birdflop.com/resources/rgb/ 上提供的格式
+# 您可以在同一條訊息中同時使用所有格式。插件支援此功能。
+
+Plugin:
+  plugin-prefix: "&6CoolLobby &8|" # 插件前綴。請在訊息中使用 {P}
+  plugin-reload: "{P} &7插件已成功 &a重新加載"
+  plugin-has-error-reload: "{P} &7插件重新加載時發生錯誤: &c{ERROR}"
+  plugin-use-latest-version: "{P} &7您正在使用插件的 &a最新版本"
+  plugin-use-outdated-version: "{P} &7您使用的是過時的版本: &c{OUTDATED_VERS} \n&7建議安裝最新版本: &6{LATEST_VERS} \n&7下載: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
+
+Messages:
+  command-permission-error: "{P} &c您沒有權限執行此命令 O_o"
+  command-no-console-error: "{P} &c此命令僅限玩家使用！"
+  command-cooldown: "{P} &7請等待 &6{TIME} &7秒後再執行此命令"
+  command-disable: "{P} &7此命令已被伺服器管理員禁用"
+  command-only-lobby-use: "{P} &7此命令僅在 &6{WORLD} 世界中可用"
+
+  command-main-message: "{P} &7插件命令幫助: \n\n
+    &e/fw &7— 啟動煙火 \n
+    &e/lt &7— 呼喚閃電 \n
+    &e/spit &7— 吐口水 \n
+    &e/fly &7— 啟用/禁用飛行模式 \n
+    &e/coollobby &7— 發送此訊息 \n
+    &e/coollobby reload&7— 重新加載插件 \n\n
+  &7開發者: &6{DEVELOPER} \n
+  &7聯絡方式: <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
+
+  command-firework-message: "{P} &7煙火！"
+  command-lighting-message: "{P} &7閃電！"
+  command-spit-message: "{P} &7呸！"
+  command-fly-enable-message: "{P} &7飛行模式 &a已啟用"
+  command-fly-disable-message: "{P} &7飛行模式 &c已禁用"
+
+  player-join-message: "{P} &7歡迎，&6{NAME}!"
+  player-join-global-message: "{P} &6{NAME}&7 已加入伺服器"
+
+  player-leave-global-message: "{P} &6{NAME}&7 離開了我們的伺服器"
+
+  player-double-jump-message: "{P} &7哇！這是一次精彩的跳躍！"
+  player-double-jump-action-bar-cooldown: "&7請等待 &6{TIME} &7秒後才能進行下一次跳躍"
+
+Title:
+  player-join-title: "&6&l歡迎來到伺服器！"
+  player-join-subtitle: "&7在 &cAnarchy &7和 &cGrief &7上進行了重置"
+
+# 請勿編輯此項
+config_version: 1.0

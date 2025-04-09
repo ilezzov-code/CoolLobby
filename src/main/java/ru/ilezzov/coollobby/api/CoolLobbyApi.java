@@ -65,7 +65,7 @@ public class CoolLobbyApi {
         final LlamaSpit llamaSpit = (LlamaSpit) world.spawnEntity(player.getLocation().toVector().add(player.getLocation().getDirection().multiply(0.8)).toLocation(player.getWorld()).add(0.0, 1.0, 0.0), EntityType.LLAMA_SPIT);
 
         llamaSpit.setVelocity(player.getEyeLocation().getDirection().multiply(1));
-        world.playSound(player.getLocation(), Sound.ENTITY_LLAMA_SPIT, 1, 1);
+        playSound(player, Sound.ENTITY_LLAMA_SPIT);
     }
 
     public void createDoubleJump(final Player player, final Particle particle, final Sound sound) {
@@ -97,7 +97,7 @@ public class CoolLobbyApi {
     }
 
     private void playSound(final Player player, final Sound sound) {
-        player.playSound(player, sound, 1, 1);
+        player.getWorld().playSound(player.getLocation(), sound, 1, 1);
     }
 
     public boolean setFly(final Player player) {

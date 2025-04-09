@@ -1,0 +1,51 @@
+# プラグインはすべてのメッセージフォーマットをサポートしています。
+# LEGACY — & / § を使った色指定、HEX は &#rrggbb / §#rrggbb または &x&r&r&g&g&b&b / §x§r§r§g§g§b§b
+# LEGACY_ADVANCED — &##rrggbb / §##rrggbb を使った色とHEX
+# MINI_MESSAGE — <色> で色指定 詳細はこちら — https://docs.advntr.dev/minimessage/index.html
+# そして https://www.birdflop.com/resources/rgb/ で利用できるすべてのフォーマット
+# すべてのフォーマットを1つのメッセージで同時に使用できます。プラグインはこれをサポートします。
+
+Plugin:
+  plugin-prefix: "&6CoolLobby &8|" #プラグインのプレフィックス。メッセージ内で {P} を使用
+  plugin-reload: "{P} &7プラグインが &a正常に再読み込みされました"
+  plugin-has-error-reload: "{P} &7プラグインの再読み込み中にエラーが発生しました: &c{ERROR}"
+  plugin-use-latest-version: "{P} &7最新のプラグインバージョンを使用しています"
+  plugin-use-outdated-version: "{P} &7古いバージョンを使用しています: &c{OUTDATED_VERS} \n&7最新バージョンをインストールすることをお勧めします: &6{LATEST_VERS} \n&7ダウンロード: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
+
+Messages:
+  command-permission-error: "{P} &cこのコマンドを実行する権限がありません O_o"
+  command-no-console-error: "{P} &cこのコマンドはプレイヤー専用です！"
+  command-cooldown: "{P} &7このコマンドを再度実行するには &6{TIME} &7秒待ってください"
+  command-disable: "{P} &7このコマンドはサーバー管理者によって無効化されています"
+  command-only-lobby-use: "{P} &7このコマンドは &6{WORLD} のみで使用できます"
+
+  command-main-message: "{P} &7プラグインコマンドのヘルプ: \n\n
+    &e/fw &7— 花火を打ち上げる \n
+    &e/lt &7— 雷を落とす \n
+    &e/spit &7— 唾を吐く \n
+    &e/fly &7— 飛行モードのオン/オフ \n
+    &e/coollobby &7— このメッセージを送信 \n
+    &e/coollobby reload&7— プラグインを再読み込み \n\n
+  &7開発者: &6{DEVELOPER} \n
+  &7連絡先: <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
+
+  command-firework-message: "{P} &7花火！"
+  command-lighting-message: "{P} &7雷！"
+  command-spit-message: "{P} &7ペッ！"
+  command-fly-enable-message: "{P} &7飛行モード &a有効"
+  command-fly-disable-message: "{P} &7飛行モード &c無効"
+
+  player-join-message: "{P} &7ようこそ、&6{NAME}!"
+  player-join-global-message: "{P} &6{NAME}&7 がサーバーに参加しました"
+
+  player-leave-global-message: "{P} &6{NAME}&7 がサーバーから退出しました"
+
+  player-double-jump-message: "{P} &7すごい！ すごいジャンプ！"
+  player-double-jump-action-bar-cooldown: "&7次のジャンプまで &6{TIME} &7秒待ってください"
+
+Title:
+  player-join-title: "&6&lサーバーへようこそ！"
+  player-join-subtitle: "&7Anarchy と &cGrief のワイプ"
+
+# これを編集しないでください
+config_version: 1.0

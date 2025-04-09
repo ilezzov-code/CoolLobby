@@ -28,8 +28,7 @@
 # • Card: 5536914188326494
 
 # Supporting messages languages / Доступные языки сообщений:
-# • Русский (ru-RU)
-# • English (en-US)
+# ru-RU, en-US, cs-CZ, de-DE, es-ES, fi-FI, fr-FR, id-ID, it-IT, ja-JP, pl-PL, pt-BR, sk-SK, tr-TR, uk-UA, zn-CN, zh-TW
 language: "ru-RU"
 
 # Check the plugin for updates

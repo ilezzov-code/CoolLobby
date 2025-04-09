@@ -4,6 +4,7 @@
 
 <div align="center">
     <h1>Make your Lobby time more exciting</h1>
+    <p>Support version: 1.18.2 — 1.21.x</p>
 </div>
 
 <div align="center">

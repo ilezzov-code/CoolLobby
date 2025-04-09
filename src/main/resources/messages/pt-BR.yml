@@ -1,0 +1,51 @@
+# O plugin suporta todos os tipos de formatação de mensagens.
+# LEGACY — Cor via & / § e HEX via &#rrggbb / §#rrggbb ou &x&r&r&g&g&b&b / §x§r§r§g§g§b§b
+# LEGACY_ADVANCED — Cor e HEX via &##rrggbb / §##rrggbb
+# MINI_MESSAGE — Cor via <cor> Mais detalhes — https://docs.advntr.dev/minimessage/index.html
+# E todos os formatos disponíveis em https://www.birdflop.com/resources/rgb/
+# Você pode usar todos os formatos ao mesmo tempo em uma mensagem. O plugin suporta isso.
+
+Plugin:
+  plugin-prefix: "&6CoolLobby &8|" #Prefixo do plugin. Use {P} nas mensagens
+  plugin-reload: "{P} &7Plugin recarregado &acom sucesso"
+  plugin-has-error-reload: "{P} &7Ocorreu um erro ao recarregar o plugin: &c{ERROR}"
+  plugin-use-latest-version: "{P} &7Você está usando a versão &aúltima &7do plugin"
+  plugin-use-outdated-version: "{P} &7Você está usando uma versão desatualizada: &c{OUTDATED_VERS} \n&7Recomendamos instalar a última versão: &6{LATEST_VERS} \n&7Baixe aqui: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
+
+Messages:
+  command-permission-error: "{P} &cVocê não tem permissão para executar este comando O_o"
+  command-no-console-error: "{P} &cEste comando está disponível apenas para jogadores!"
+  command-cooldown: "{P} &7Espere mais &6{TIME} &7segundos antes de executar este comando novamente"
+  command-disable: "{P} &7Este comando foi desativado pelo administrador do servidor"
+  command-only-lobby-use: "{P} &7Este comando está disponível apenas no mundo &6{WORLD}"
+
+  command-main-message: "{P} &7Ajuda dos comandos do plugin: \n\n
+    &e/fw &7— lançar um fogos de artifício \n
+    &e/lt &7— invocar um raio \n
+    &e/spit &7— cuspir \n
+    &e/fly &7— ativar/desativar o modo de voo \n
+    &e/coollobby &7— enviar esta mensagem \n
+    &e/coollobby reload&7— recarregar o plugin \n\n
+  &7Desenvolvedor: &6{DEVELOPER} \n
+  &7Contato: <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
+
+  command-firework-message: "{P} &7Fogos de artifício!"
+  command-lighting-message: "{P} &7Raio!"
+  command-spit-message: "{P} &7Plft!"
+  command-fly-enable-message: "{P} &7Modo de voo &aativado"
+  command-fly-disable-message: "{P} &7Modo de voo &cdesativado"
+
+  player-join-message: "{P} &7Bem-vindo, &6{NAME}!"
+  player-join-global-message: "{P} &6{NAME}&7 entrou no servidor"
+
+  player-leave-global-message: "{P} &6{NAME}&7 deixou o nosso incrível servidor"
+
+  player-double-jump-message: "{P} &7Uau! Que salto!"
+  player-double-jump-action-bar-cooldown: "&7Espere mais &6{TIME} &7segundos para o próximo salto"
+
+Title:
+  player-join-title: "&6&lBem-vindo ao servidor!"
+  player-join-subtitle: "&7Wipe no &cAnarchy &7e &cGrief"
+
+# Não edite isso
+config_version: 1.0
