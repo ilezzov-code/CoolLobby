@@ -14,15 +14,15 @@
 
 ##  <a>Table of Contents</a>
 
-- [About](#a-idaboutописаниеa)
-- [Features](#a-idfeaturesособенностиa)
-- [Config.yml](#a-idconfigconfigymla)
-- [Commands](#a-idcommandsкоманды-команда--псевдоним1-псевдоним2---правоa)
+- [About](#about)
+- [Features](#features)
+- [Config.yml](#config)
+- [Commands](#commands)
 - [Double Jump](#double-jump)
-- [Permissions](#все-права-плагина)
-- [Multi-World Synchronization](#a-idsyncсинхронизация-с-несколькими-мирами-a)
-- [Multiple Spawn System](#a-idspawn-systemсистема-нескольких-спавновa)
-- [Gallery](#a-idpicturesгалереяa)
+- [Permissions](#permissions)
+- [Multi-World Synchronization](#sync)
+- [Multiple Spawn System](#spawn-system)
+- [Gallery](#pictures)
 
 
 ## <a id="about">About</a>
@@ -43,8 +43,8 @@
 * Disable fire spread
 * Set default game mode
 * Set default experience level
-* 5 useful and fun commands → [more info](#co)
-* Multi-spawn system
+* 5 useful and fun commands → [more info](#commands)
+* Multi-spawn system → [more info](#spawn-system)
 * Join and leave messages for players
     * Title message on join
     * Sound on join
@@ -317,13 +317,13 @@ config_version: 1.2
 
 </details>
 
-## Double Jump ※ `coollobby.double_jump`
+## <a id="double_jump">Double Jump ※ `coollobby.double_jump`</a>
 
 * Activated by double pressing the spacebar
 * Does not work if /fly is enabled or game mode is Creative
 * Creates a beautiful particle trail during jump and plays a sound
 
-## All plugin permissions
+## <a id="permissions">All plugin permissions</a>
 
 | Право                           | Описание                                   |
 |---------------------------------|--------------------------------------------|
