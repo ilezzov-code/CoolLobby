@@ -1,7 +1,10 @@
 package ru.ilezzov.coollobby.database.adapter;
 
+import lombok.extern.slf4j.Slf4j;
+import ru.ilezzov.coollobby.Main;
 import ru.ilezzov.coollobby.database.DatabaseType;
 import ru.ilezzov.coollobby.database.SQLDatabase;
+import ru.ilezzov.coollobby.logging.Logger;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
