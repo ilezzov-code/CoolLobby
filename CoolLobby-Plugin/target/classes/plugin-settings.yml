@@ -1,0 +1,29 @@
+Urls:
+  url-to-file-version: "https://raw.githubusercontent.com/ilezzov-code/CoolLobby/main/VERSION"
+  url-to-download-latest-version: "https://github.com/ilezzov-code/CoolLobby/releases"
+
+Bstats:
+  enable: true
+  plugin-id: 25190
+
+Messages:
+  create-new-file: "The file &6%s &rhas been created"
+  add-new-keys-to-file: "The file &6%s &rhas been updated. Check then new settings"
+
+  legacy-plugin-version: "You use &coutdated &rplugin version: &6%s&r. \nPlease, download latest plugin version: &6%s&r. \nDownload — &6%s"
+  latest-plugin-version: "You use &alatest &rplugin version: &6%s"
+
+  error-occurred: "An error occurred: &c%s"
+
+  success-connect-to-database: "Connection to the database is &aestablished"
+  database-error: "Error when making a database query: &c%s"
+  save-player: "Player &6%s &rhas been added in save queue"
+  save-queue: "The save queue has been saved in database"
+
+  plugin-enabled: "Plugin has been &aenabled \n&rDeveloper: &6%s \n&rVersion: &6%s \n&rWebsite: &6%s"
+  plugin-disabled: "Plugin has been &cdisabled \n&rDeveloper: &6%s \n&rVersion: &6%s \n&rWebsite: &6%s"
+
+  event-loaded: "Event &6%s &r has been loaded"
+  api-loaded: "Plugin api has been loaded"
+
+  world-loaded: "The lobby world &6%s &r has been loaded"

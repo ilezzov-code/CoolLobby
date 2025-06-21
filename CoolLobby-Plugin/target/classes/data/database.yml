@@ -1,0 +1,12 @@
+# Database settings
+Database:
+  type: SQLITE # SQLITE, MYSQL, POSTGRESQL
+  host: localhost
+  port: 3306
+  database: coollobby
+  username: root
+  password: secret
+
+# Don't edit this
+# Не редактируйте это
+config_version: 1.0

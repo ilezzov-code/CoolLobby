@@ -1,0 +1,78 @@
+# The plugin supports all types of message formatting.
+# LEGACY — Color via & / § and HEX via &#rrggbb / §#rrggbb or &x&r&r&g&g&b&b / §x§r§r§g§g§b§b
+# LEGACY_ADVANCED — Color and HEX via &##rrggbb / §##rrggbb
+# MINI_MESSAGE — Color via <color>. More details — https://docs.advntr.dev/minimessage/index.html
+# All formats are available at https://www.birdflop.com/resources/rgb/
+# You can use all formats simultaneously in one message. The plugin supports this.
+
+Plugin:
+  plugin-prefix: "&6CoolLobby &8|" # Plugin prefix. Use {P} in messages
+  plugin-reload: "{P} &7Plugin successfully &areloaded"
+  plugin-has-error-reload: "{P} &7An error occurred while reloading the plugin: &c{ERROR}"
+  plugin-use-latest-version: "{P} &7You are using the &alatest &7version of the plugin: &6{LATEST_VERS}"
+  plugin-use-outdated-version: "{P} &7You are using an outdated version: &c{OUTDATED_VERS} \n&7We recommend installing the latest version: &6{LATEST_VERS} \n&7Download: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"
+  plugin-has-error: "{P} &7An error occurred while executing the command O_o → &c{ERROR}"
+  plugin-has-error-check-version: "{P} &7Failed to get the latest plugin version. Check your internet connection."
+
+Messages:
+  command-permission-error: "{P} &cYou do not have permission to execute this command O_o"
+  command-no-console-error: "{P} &cThis command is only available for players!"
+  command-cooldown: "{P} &7Please wait &6{TIME} &7seconds before executing this command"
+  command-disable: "{P} &7This command has been disabled by the server administrator"
+  command-only-lobby-use: "{P} &7This command is only available in &6{WORLD}"
+  command-player-not-found: "{P} &7Player &6{PLAYER} &7not found or offline"
+
+  command-main-message: "{P} &7Help for plugin commands: \n\n
+    &e/fw &7— launch fireworks \n
+    &e/lt &7— strike lightning \n
+    &e/spit &7— spit \n
+    &e/fly &7— enable/disable fly mode \n
+    &e/spawn help &7— help for the &e/spawn command\n
+    &e/coollobby &7— send this message \n
+    &e/coollobby version &7— check the current plugin version \n
+    &e/coollobby reload &7— reload the plugin \n\n
+  &7Developer: &6{DEVELOPER} \n
+  &7Contact: <click:open_url:{CONTACT_LINK}>&e{CONTACT_LINK}"
+
+  command-firework-message: "{P} &7Fireworks!"
+  command-lighting-message: "{P} &7Lightning!"
+  command-spit-message: "{P} &7Spit!"
+  command-fly-enable-message: "{P} &7Fly mode &aenabled"
+  command-fly-disable-message: "{P} &7Fly mode &cdisabled!"
+
+  command-spawn-teleport-message: "{P} &7Teleported to spawn &6{SPAWN_NAME}"
+  command-spawn-teleport-other-message: "{P} &7Teleported player &6{PLAYER} &7to spawn &6{SPAWN_NAME}"
+  command-spawn-teleport-by-other-message: "{P} &7You teleported player &6{PLAYER} &7to spawn &6{SPAWN_NAME}"
+  command-spawn-not-set-message: "{P} &7Cannot teleport to spawn because it is not set"
+  command-spawn-set-overwrite-message: "{P} &7Spawn &6{SPAWN_NAME} &7already exists. Enter &6/spawn confirm &7to confirm changes"
+  command-spawn-not-found-confirm-message: "{P} &7You have no active spawn setup requests"
+  command-spawn-set-message: "{P} &7You set a new spawn &6{SPAWN_NAME}"
+  command-spawn-remove-message: "{P} &7You removed spawn &6{SPAWN_NAME}"
+  command-spawn-not-found-message: "{P} &7Spawn &6{SPAWN_NAME} does not exist"
+  command-spawn-help-message: "{P} &7Help for the &6/spawn &7command:\n\n
+    &e/spawn &7— teleport to spawn \n
+    &e/spawn <name> &7— teleport to specified spawn \n
+    &e/spawn <player> &7— teleport specified player to spawn \n
+    &e/spawn <name> <player> &7— teleport player to specified spawn \n
+    \n
+    &e/spawn set &7— set spawn for the current world \n
+    &e/spawn confirm &7— confirm spawn setup \n
+    \n
+    &e/spawn remove &7— remove spawn for the current world \n
+    &e/spawn remove <name> &7— remove specified spawn \n
+  "
+
+  player-join-message: "{P} &7Welcome, &6{NAME}!"
+  player-join-global-message: "{P} &6{NAME}&7, joined our server"
+
+  player-leave-global-message: "{P} &6{NAME}&7, left our wonderful server"
+
+  player-double-jump-message: "{P} &7Wow! What a jump"
+  player-double-jump-action-bar-cooldown: "&7Wait &6{TIME} &7seconds for the next jump"
+
+Title:
+  player-join-title: "&6&lWelcome to the server!"
+  player-join-subtitle: "&7Wipe on &cAnarchy &7and &cGrief"
+
+# Do not edit this
+config_version: 1.2

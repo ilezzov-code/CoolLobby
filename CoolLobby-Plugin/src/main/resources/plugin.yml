@@ -1,0 +1,52 @@
+name: CoolLobby
+version: ${project.version}
+main: ru.ilezzov.coollobby.Main
+api-version: '1.18'
+prefix: CoolLobby
+authors: [ ILeZzoV ]
+description: Diversify your time in Lobby
+load: POSTWORLD
+website: https://t.me/ilezzov
+commands:
+  coollobby:
+    description: The main plugin command
+    aliases:
+      - cl
+      - cool-lobby
+    usage: /coollobby <version/reload>
+
+  firework:
+    description: "Spawn firework"
+    aliases:
+      - fw
+      - фейерверк
+    usage: /fw
+
+  lighting:
+    description: "Spawn lighting"
+    aliases:
+      - lt
+      - молния
+    usage: /lt
+
+  spit:
+    description: "Spit in your opponent"
+    aliases:
+      - sp
+      - плюнуть
+    usage: /spit
+
+  fly:
+    description: "Enable / Disable fly mode"
+    aliases:
+      - полет
+      - полёт
+    usage: /fly
+
+  spawn:
+    description: "Teleport to the server spawn"
+    aliases:
+      - спавн
+    usage: /spawn <set/player>
+
+
