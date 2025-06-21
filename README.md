@@ -18,7 +18,7 @@
 - [Features](#features)
 - [Config.yml](#config)
 - [Commands](#commands)
-- [Double Jump](#double-jump)
+- [Double Jump](#double_jump)
 - [Permissions](#permissions)
 - [Multi-World Synchronization](#sync)
 - [Multiple Spawn System](#spawn-system)
