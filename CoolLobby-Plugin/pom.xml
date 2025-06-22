@@ -6,7 +6,7 @@
 
   <groupId>ru.ilezzov</groupId>
   <artifactId>CoolLobby-Plugin</artifactId>
-  <version>1.2</version>
+  <version>1.2.1</version>
   <packaging>jar</packaging>
 
   <name>CoolLobby-Plugin</name>
@@ -78,7 +78,7 @@
     <dependency>
       <groupId>ru.ilezzov</groupId>
       <artifactId>CoolLobby-API</artifactId>
-      <version>1.2</version>
+      <version>1.2.1</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
