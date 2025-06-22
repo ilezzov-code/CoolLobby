@@ -23,6 +23,9 @@
 - [Multi-World Synchronization](#sync)
 - [Multiple Spawn System](#spawn-system)
 - [Gallery](#pictures)
+- [Links](#links)
+- [Buy me coffee](#donate)
+- [Report a bug](https://github.com/ilezzov-code/CoolLobby/issues)
 
 
 ## <a id="about">About</a>
@@ -415,6 +418,23 @@ If multiple spawns are set, `/spawn` will teleport the player to a random spawn 
     <img src="img/screenshots/db1.png" width="200">
     <img src="img/screenshots/db2.png" width="200">
 </div>
+
+## <a id="links">Links</a>
+
+* Contact: https://t.me/ilezovofficial
+* Telegram Channel: https://t.me/ilezzov_en
+* Modrinth: https://modrinth.com/plugin/coollobby
+
+## <a id="donate">Buy me coffee</a>
+
+* DA: https://www.donationalerts.com/r/ilezzov_dev
+* YooMoney: https://yoomoney.ru/to/4100118180919675
+* Telegram Gift: https://t.me/ilezovofficial
+* TON: UQCInXoHOJAlMpZ-8GIHqv1k0dg2E4pglKAIxOf3ia5xHmKV
+* BTC: 1KCM1QN9TNYRevvQD63UF81oBRSK67vCon
+* Card: 5536914188326494
+
+## Found an issue or have a question? Create a new issue — https://github.com/ilezzov-code/CoolLobby/issues/new
 
 ## <a id="license">License</a>
 
