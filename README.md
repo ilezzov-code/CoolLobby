@@ -31,7 +31,7 @@
 
 ## <a id="features">Features</a>
 
-* **[🔥] Синхронизация с несколькими мирами** → [подробнее](#sync)
+* **[🔥] Multi-World Synchronization** → [подробнее](#sync)
 * Support for 2 languages (Russian, English) + ability to create your own translation
 * Disable damage
 * Disable hunger
@@ -380,7 +380,7 @@ If multiple spawns are set, `/spawn` will teleport the player to a random spawn 
 
 <img src="img/gifs/spawn_system.gif">
 
-## <a id="pictures">Галерея</a>
+## <a id="pictures">Gallery</a>
 
 ### Firework `/firework`
 
