@@ -38,6 +38,13 @@ public interface SQLDatabase {
     void disconnect() throws SQLException;
 
     /**
+     * Reconnect the connection to the database.
+     *
+     * @throws SQLException if an error occurs while closing the connection or the connection could not be established
+     */
+    void reconnect() throws SQLException;
+
+    /**
      * Returns the current {@link Connection} to the database.
      *
      * @return the current {@link Connection}, or {@code null} if not connected

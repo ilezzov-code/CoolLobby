@@ -7,7 +7,7 @@
 
 Plugin:
   plugin-prefix: "&6CoolLobby &8|" # Plugin prefix. Use {P} in messages
-  plugin-reload: "{P} &7Plugin successfully &areloaded"
+  plugin-reload: "{P} &7Plugin successfully &areloaded \n&7Use &6/reload confirm &7or &6/restart &7if you have modified &6database.yml"
   plugin-has-error-reload: "{P} &7An error occurred while reloading the plugin: &c{ERROR}"
   plugin-use-latest-version: "{P} &7You are using the &alatest &7version of the plugin: &6{LATEST_VERS}"
   plugin-use-outdated-version: "{P} &7You are using an outdated version: &c{OUTDATED_VERS} \n&7We recommend installing the latest version: &6{LATEST_VERS} \n&7Download: <click:open_url:{DOWNLOAD_LINK}>&e{DOWNLOAD_LINK}"

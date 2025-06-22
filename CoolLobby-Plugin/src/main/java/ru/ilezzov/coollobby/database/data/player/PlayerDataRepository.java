@@ -3,6 +3,7 @@ package ru.ilezzov.coollobby.database.data.player;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import lombok.extern.slf4j.Slf4j;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.World;
@@ -127,10 +128,9 @@ public class PlayerDataRepository implements DataRepository<UUID, PlayerData> {
                         "(uuid, display_name, game_mode, exp_level, exp_level_exp, food_level, fly_mode) " +
                         "VALUES (?, ?, ?, ?, ?, ?, ?) " +
                         "ON CONFLICT (uuid) DO NOTHING";
-                case MYSQL -> "INSERT INTO players " +
+                case MYSQL -> "INSERT IGNORE INTO players " +
                         "(uuid, display_name, game_mode, exp_level, exp_level_exp, food_level, fly_mode) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?) " +
-                        "ON DUPLICATE KEY UPDATE uuid = uuid";
+                        "VALUES (?, ?, ?, ?, ?, ?, ?)";
             };
 
             final List<Object[]> batchParams = new ArrayList<>(data.size());
@@ -149,7 +149,7 @@ public class PlayerDataRepository implements DataRepository<UUID, PlayerData> {
             }
 
             try {
-                int[] affectedRows = database.executePreparedBatchUpdate(sql, batchParams);
+                final int[] affectedRows = database.executePreparedBatchUpdate(sql, batchParams);
 
                 for (int i = 0; i < affectedRows.length; i++) {
                     boolean wasInserted = affectedRows[i] == 1;

@@ -123,7 +123,7 @@ public class SpawnDataRepository implements DataRepository<String, SpawnData> {
                         "(name, world_name, x, y, z, pitch, yaw) " +
                         "VALUES (?, ?, ?, ?, ?, ?, ?) " +
                         "ON CONFLICT (name) DO NOTHING";
-                case MYSQL -> "INSERT INTO players " +
+                case MYSQL -> "INSERT INTO server_spawn " +
                         "(name, world_name, x, y, z, pitch, yaw) " +
                         "VALUES (?, ?, ?, ?, ?, ?, ?) " +
                         "ON DUPLICATE KEY UPDATE name = name";
@@ -160,10 +160,9 @@ public class SpawnDataRepository implements DataRepository<String, SpawnData> {
                         "(name, world_name, x, y, z, pitch, yaw) " +
                         "VALUES (?, ?, ?, ?, ?, ?, ?) " +
                         "ON CONFLICT (name) DO NOTHING";
-                case MYSQL -> "INSERT INTO players " +
+                case MYSQL -> "INSERT IGNORE INTO players " +
                         "(name, world_name, x, y, z, pitch, yaw) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?) " +
-                        "ON DUPLICATE KEY UPDATE name = name";
+                        "VALUES (?, ?, ?, ?, ?, ?, ?)";
             };
             final List<Object[]> batchParams = new ArrayList<>(data.size());
             for (final SpawnData spawnData : data) {

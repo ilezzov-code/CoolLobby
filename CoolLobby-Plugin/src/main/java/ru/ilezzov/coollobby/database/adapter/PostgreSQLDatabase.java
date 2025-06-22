@@ -67,6 +67,14 @@ public class PostgreSQLDatabase implements SQLDatabase {
     }
 
     @Override
+    public void reconnect() throws SQLException {
+        if (isConnected()) {
+            disconnect();
+        }
+        connect();
+    }
+
+    @Override
     public Connection getConnection() {
         return connection;
     }

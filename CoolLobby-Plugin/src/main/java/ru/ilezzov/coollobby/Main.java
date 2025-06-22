@@ -2,6 +2,7 @@ package ru.ilezzov.coollobby;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.World;
@@ -43,6 +44,7 @@ import java.util.UUID;
 import static ru.ilezzov.coollobby.commands.CommandManager.loadCommands;
 import static ru.ilezzov.coollobby.messages.ConsoleMessages.*;
 
+@Slf4j
 public final class Main extends JavaPlugin {
     // API
     @Getter
@@ -122,7 +124,7 @@ public final class Main extends JavaPlugin {
         checkPluginVersion();
 
         // Connect to the database
-        database = createDatabase();
+        createDatabase();
 
         try {
             database.connect();
@@ -176,6 +178,14 @@ public final class Main extends JavaPlugin {
 
         if (doubleJumpManager != null) {
             doubleJumpManager.stopTask();
+        }
+
+        if (database != null) {
+            try {
+                database.disconnect();
+            } catch (SQLException e) {
+                pluginLogger.error(ConsoleMessages.errorOccurred(e.getMessage()));
+            }
         }
 
         stopWeatherTask();
@@ -375,12 +385,12 @@ public final class Main extends JavaPlugin {
         pluginLogger.info(pluginEnable(ListUtils.listToString(getPluginDevelopers()), getPluginVersion(), getPluginContactLink()));
     }
 
-    private SQLDatabase createDatabase() {
+    public static void createDatabase() {
         final ConfigurationSection section = databaseFile.getConfig().getConfigurationSection("Database");
         assert section != null;
         final String type = section.getString("type", "SQLITE");
 
-        return switch (type.toUpperCase()) {
+        database = switch (type.toUpperCase()) {
             case "MYSQL" -> new MySQLDatabase(
                     section.getString("host"),
                     section.getInt("port"),
@@ -397,7 +407,7 @@ public final class Main extends JavaPlugin {
                     section.getString("password"),
                     DatabaseType.POSTGRESQL
             );
-            default -> new SQLiteDatabase(new File(getDataFolder().getPath(), "data/database.db").getPath(), DatabaseType.SQLITE);
+            default -> new SQLiteDatabase(new File(Main.getInstance().getDataFolder().getPath(), "data/database.db").getPath(), DatabaseType.SQLITE);
         };
     }
 }

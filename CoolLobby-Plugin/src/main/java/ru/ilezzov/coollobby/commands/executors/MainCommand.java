@@ -1,6 +1,5 @@
 package ru.ilezzov.coollobby.commands.executors;
 
-import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -18,17 +17,14 @@ import ru.ilezzov.coollobby.database.data.player.PlayerData;
 import ru.ilezzov.coollobby.database.data.player.PlayerDataRepository;
 import ru.ilezzov.coollobby.database.data.spawn.SpawnData;
 import ru.ilezzov.coollobby.database.data.spawn.SpawnDataRepository;
-import ru.ilezzov.coollobby.events.EventManager;
 import ru.ilezzov.coollobby.logging.Logger;
 import ru.ilezzov.coollobby.managers.VersionManager;
-import ru.ilezzov.coollobby.messages.ConsoleMessages;
 import ru.ilezzov.coollobby.messages.PluginMessages;
 import ru.ilezzov.coollobby.permission.Permission;
 import ru.ilezzov.coollobby.placeholder.PluginPlaceholder;
 import ru.ilezzov.coollobby.utils.LegacySerialize;
 import ru.ilezzov.coollobby.utils.ListUtils;
 
-import java.beans.EventHandler;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -48,9 +44,8 @@ public class MainCommand implements CommandExecutor, TabCompleter {
     private final PluginPlaceholder commandPlaceholders = new PluginPlaceholder();
     private final PlayerDataRepository playerDataRepository = Main.getPlayerDataRepository();
     private final SpawnDataRepository spawnDataRepository = Main.getSpawnDataRepository();
-    private final SQLDatabase database = Main.getDatabase();
     private final Logger logger = Main.getPluginLogger();
-
+    private final SQLDatabase database = getDatabase();
 
     @Override
     public boolean onCommand(@NotNull final CommandSender sender, @NotNull final Command command, @NotNull final String s, final @NotNull String @NotNull [] args) {
@@ -71,8 +66,8 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                     checkPluginVersion();
 
                     try {
-                        database.connect();
-                        database.initialize();
+                        database.reconnect();
+                        Main.getDatabase().initialize();
                         logger.info(successConnectToDatabase());
                     } catch (SQLException | IOException e) {
                         logger.info(errorOccurred(e.getMessage()));
@@ -129,7 +124,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
             case "sql" -> {
                 if (hasPermission(sender)) {
                     try {
-                        database.executeUpdate(getSqlUrl(args));
+                        Main.getDatabase().executeUpdate(getSqlUrl(args));
                         sender.sendMessage(LegacySerialize.serialize("&7Запрос &aуспешно &7выполнен"));
                     } catch (SQLException e) {
                         sender.sendMessage(errorOccurred(e.getMessage()));
@@ -138,7 +133,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
             }
             case "sql-result" -> {
                 if (hasPermission(sender)) {
-                    try (final ResultSet resultSet = database.executeQuery(getSqlUrl(args))) {
+                    try (final ResultSet resultSet = Main.getDatabase().executeQuery(getSqlUrl(args))) {
                         sender.sendMessage(getSqlResponse(resultSet));
                     } catch (SQLException e) {
                         sender.sendMessage(errorOccurred(e.getMessage()));
