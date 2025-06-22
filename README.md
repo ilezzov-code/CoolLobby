@@ -31,7 +31,7 @@
 
 ## <a id="features">Features</a>
 
-* **[🔥] Multi-World Synchronization** → [подробнее](#sync)
+* **[🔥] Multi-World Synchronization** → [more info](#sync)
 * Support for 2 languages (Russian, English) + ability to create your own translation
 * Disable damage
 * Disable hunger
