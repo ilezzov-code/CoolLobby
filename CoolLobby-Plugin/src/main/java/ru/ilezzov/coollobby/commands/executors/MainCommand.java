@@ -108,7 +108,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                     return true;
                 }
 
-                commandPlaceholders.addPlaceholder("{LATEST_VERS}", Main.getPluginVersion());
+                commandPlaceholders.addPlaceholder("{LATEST_VERS}", versionManager.getCurrentPluginVersion());
 
                 if (isOutdatedVersion()) {
                     commandPlaceholders.addPlaceholder("{DOWNLOAD_LINK}", getPluginSettings().getUrlToDownloadLatestVersion());
