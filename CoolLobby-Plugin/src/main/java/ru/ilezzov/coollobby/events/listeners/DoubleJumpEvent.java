@@ -1,5 +1,6 @@
 package ru.ilezzov.coollobby.events.listeners;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Particle;
@@ -61,7 +62,11 @@ public class DoubleJumpEvent implements Listener {
 
         event.setCancelled(true);
         api.createDoubleJump(player, particle, sound);
-        player.sendMessage(PluginMessages.playerDoubleJumpMessage(placeholder));
+
+        final Component message = PluginMessages.playerDoubleJumpMessage(placeholder);
+        if (message != null) {
+            player.sendMessage(message);
+        }
 
         if (!PermissionsChecker.hasPermission(player, Permission.NO_COOLDOWN)) {
             cooldownManager.newCooldown(player.getUniqueId());

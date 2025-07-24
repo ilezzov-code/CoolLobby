@@ -1,5 +1,6 @@
 package ru.ilezzov.coollobby.commands.executors;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -53,7 +54,10 @@ public class FireworkCommand implements CommandExecutor {
         }
 
         api.spawnFirework(player);
-        sender.sendMessage(PluginMessages.commandFireworkCommandMessage(commandPlaceholders));
+
+        final Component message = PluginMessages.commandFireworkCommandMessage(commandPlaceholders);
+        if (message != null)
+            sender.sendMessage(message);
 
         if (!PermissionsChecker.hasPermission(sender, Permission.NO_COOLDOWN)) {
             cooldownManager.newCooldown(player.getUniqueId());

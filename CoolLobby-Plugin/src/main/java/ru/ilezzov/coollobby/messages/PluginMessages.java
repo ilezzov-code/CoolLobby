@@ -159,6 +159,11 @@ public class PluginMessages {
 
     private static Component getComponent(final String key, final PluginPlaceholder placeholder) {
         String message = getMessages().getString(key);
+
+        if (message == null || message.isBlank()) {
+            return null;
+        }
+
         message = replacePlaceholder(message, placeholder);
 
         return LegacySerialize.serialize(message);
